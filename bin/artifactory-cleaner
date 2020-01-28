@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+##
+# Artifactory Cleaner CLI
+# This file provides the command-line interface to Artifactory Cleaner. It is just an entrypoint to the
+# Artifactory::Cleaner::CLI class; all the work is done there
+# @see Artifactory::Cleaner::CLI
+
+require 'bundler/setup'
+require 'artifactory/cleaner'
+
+Artifactory::Cleaner::CLI.start(ARGV)
