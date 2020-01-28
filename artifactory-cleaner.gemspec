@@ -12,20 +12,21 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Performs maintainence tasks on Artifactory repositories}
   spec.description   = %q{Will provide maintainence tasks for Artifactory, like cleaning up old artifacts}
-  #spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://bitbucket.org/pinnacle21/artifactory-cleaner/src/master/"
+  spec.license       = 'Nonstandard'
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   #spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   #spec.metadata["homepage_uri"] = spec.homepage
-  #spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
+  spec.metadata["source_code_uri"] = "https://bitbucket.org/pinnacle21/artifactory-cleaner/src/master/"
   #spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
   
-  spec.add_development_dependency "cucumber", '~> 1.3.20'
-  spec.add_development_dependency "aruba"
+  spec.add_development_dependency "cucumber", '~> 1.3', '>= 1.3.20'
+  spec.add_development_dependency "aruba", '~> 0.14'
 
-  spec.add_dependency "thor"
-  spec.add_dependency "sysexits"
+  spec.add_dependency "thor", '~> 1.0.1'
+  spec.add_dependency "sysexits", '>= 1.2.0'
 
   spec.add_runtime_dependency "artifactory"
 
