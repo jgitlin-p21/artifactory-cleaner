@@ -10,6 +10,6 @@ require "artifactory/cleaner/cli"
 module Artifactory
   module Cleaner
     class Error < StandardError; end
-    # Your code goes here...
+
   end
 end

@@ -13,7 +13,7 @@ module Artifactory
     # executing the command specified by the user. The Artifactory::Cleaner::CLI uses {Thor}[https://github.com/erikhuda/thor]
     # to provide git command/subcommand style ARGV parsing
     #
-    # @see bin/artifactory-cleaner
+    # @see exe/artifactory-cleaner
     # @see https://github.com/erikhuda/thor
     class CLI < Thor
       class_option :verbose, :aliases => %w(-v), :type => :boolean, :desc => "Verbose mode; print additional information to STDERR"
@@ -64,6 +64,12 @@ module Artifactory
         @repo_table_cols = Artifactory::Cleaner::CLI.repo_table_cols
         #invoke :create_controller
         create_controller
+      end
+
+      desc "version", "Show version information"
+      def version
+        STDERR.puts "Artifactory::Cleaner version #{Artifactory::Cleaner::VERSION}"
+        STDERR.puts "Copyright (C) 2020 Pinnacle 21, inc. All Rights Reserved"
       end
 
       desc "list-repos", "List all available repos"
