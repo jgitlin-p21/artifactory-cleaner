@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>README - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Artifactory-3A-3ACleaner">Artifactory::Cleaner</a>
+    <li><a href="#label-Installation">Installation</a>
+    <li><a href="#label-To+use+as+a+CLI+command-3A">To use as a CLI command:</a>
+    <li><a href="#label-To+use+as+a+gem-3A">To use as a gem:</a>
+    <li><a href="#label-Usage">Usage</a>
+    <li><a href="#label-Development">Development</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./CODE_OF_CONDUCT_md.html">CODE_OF_CONDUCT</a>
+  
+    <li><a href="./Gemfile.html">Gemfile</a>
+  
+    <li><a href="./Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="./README_md.html">README</a>
+  
+    <li><a href="./Rakefile.html">Rakefile</a>
+  
+    <li><a href="./artifactory-cleaner_gemspec.html">artifactory-cleaner.gemspec</a>
+  
+    <li><a href="./artifactory-cleaner_iml.html">artifactory-cleaner.iml</a>
+  
+    <li><a href="./bin/setup.html">setup</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page README.md">
+
+<h1 id="label-Artifactory-3A-3ACleaner"><a href="Artifactory/Cleaner.html">Artifactory::Cleaner</a><span><a href="#label-Artifactory-3A-3ACleaner">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p><a href="Artifactory.html">Artifactory</a> Cleaner is a tool for managing
+<a href="Artifactory.html">Artifactory</a> repositories with a focus on
+analyzing and optimizing storage usage within <a
+href="Artifactory.html">Artifactory</a>. <code>Artifactory::Cleaner</code>
+can be used as a Gem inside other Ruby automation, and also includes a
+comamnd-line interface (CLI) which can be used inside an interactive
+terminal session or incorporated into other automation workflows.</p>
+
+<h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="label-To+use+as+a+CLI+command-3A">To use as a CLI command:<span><a href="#label-To+use+as+a+CLI+command-3A">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Check out the repo and execute:</p>
+
+<pre>bundle install
+gem build artifactory-cleaner.gemspec
+sudo gem install artifactory-cleaner-*.gem</pre>
+
+<p>to install the <code>artifactory-cleaner</code> command.</p>
+
+<h3 id="label-To+use+as+a+gem-3A">To use as a gem:<span><a href="#label-To+use+as+a+gem-3A">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Add this line to your application&#39;s Gemfile:</p>
+
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;artifactory-cleaner&#39;</span>
+</pre>
+
+<p>And then execute:</p>
+
+<pre>$ bundle install</pre>
+
+<p>Or install it yourself as:</p>
+
+<pre>$ gem install artifactory-cleaner</pre>
+
+<h2 id="label-Usage">Usage<span><a href="#label-Usage">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Execute <code>artifactory-cleaner help</code> for a usage statement</p>
+
+<h2 id="label-Development">Development<span><a href="#label-Development">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>After checking out the repo, run <code>bin/setup</code> to install
+dependencies. Then, run <code>rake spec</code> to run the tests. You can
+also run <code>bin/console</code> for an interactive prompt that will allow
+you to experiment.</p>
+
+<p>To install this gem onto your local machine, run <code>bundle exec rake
+install</code>. To release a new version, update the version number in
+<code>version.rb</code>, and then run <code>bundle exec rake
+release</code>, which will create a git tag for the version, push git
+commits and tags, and push the <code>.gem</code> file to <a
+href="https://rubygems.org">rubygems.org</a>.</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Artifactory::Cleaner::Controller - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/jquery.js"></script>
+<script src="../../js/darkfish.js"></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="../../Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-artifact_usage_search">#artifact_usage_search</a>
+    
+    <li ><a href="#method-i-bucketize_artifacts">#bucketize_artifacts</a>
+    
+    <li ><a href="#method-i-bucketized_artifact_report">#bucketized_artifact_report</a>
+    
+    <li ><a href="#method-i-catagorize_old_assets">#catagorize_old_assets</a>
+    
+    <li ><a href="#method-i-discover_artifacts_from_search">#discover_artifacts_from_search</a>
+    
+    <li ><a href="#method-i-discover_repos">#discover_repos</a>
+    
+    <li ><a href="#method-i-verbose-3D">#verbose=</a>
+    
+    <li ><a href="#method-i-verbose-3F">#verbose?</a>
+    
+    <li ><a href="#method-i-with_discovered_artifacts">#with_discovered_artifacts</a>
+    
+    <li ><a href="#method-i-yaml_format">#yaml_format</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Artifactory::Cleaner::Controller">
+  <h1 id="class-Artifactory::Cleaner::Controller" class="class">
+    class Artifactory::Cleaner::Controller
+  </h1>
+
+  <section class="description">
+    
+<p><a href="../../Artifactory.html">Artifactory</a> <a
+href="../Cleaner.html">Cleaner</a> Logic <a
+href="Controller.html">Controller</a></p>
+
+<p>The <a href="Controller.html">Artifactory::Cleaner::Controller</a> class
+provides logic central to <a href="../../Artifactory.html">Artifactory</a>
+<a href="../Cleaner.html">Cleaner</a>. <a
+href="Controller.html">Artifactory::Cleaner::Controller</a> manages the <a
+href="../../Artifactory.html">Artifactory</a> API client, performs
+searches, discovers artifacts, and more. It is capable of executing tasks
+in a multi-threaded fashon, making multiple requests to the <a
+href="../../Artifactory.html">Artifactory</a> server in parallel.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="ProcessingQueues">ProcessingQueues
+        
+        <dd><p>Struct to contain the processing queues used internally within the
+controller</p>
+<hr>
+
+<p>The controller contains two <a
+href="https://ruby-doc.org/core-2.6/Queue.html">Queues</a> which are used
+for multi-threaded processing of artifacts. The :incoming queue is fed
+tasks to be done, which <a
+href="DiscoveryWorker.html">Artifactory::Cleaner::DiscoveryWorker</a>
+instances pop from, process, and push the results back into the :outgoing
+queue. The <a href="Controller.html">Artifactory::Cleaner::Controller</a>
+will then pop from the outgoing queue and send the results back to the
+caller</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(artifactory_config)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialize and configure a new <a
+href="Controller.html">Artifactory::Cleaner::Controller</a> Params:</p>
+<dl class="rdoc-list note-list"><dt><code>artifactory_config</code>
+<dd>
+<p>Hash of configuration for the <a
+href="../../Artifactory.html">Artifactory</a> client. Used as a splat for a
+call to Artifactory::Client.new</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">artifactory_config</span>)
+  <span class="ruby-ivar">@artifactory_client</span> = <span class="ruby-identifier">client</span> = <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">**</span><span class="ruby-identifier">artifactory_config</span>)
+  <span class="ruby-ivar">@verbose</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">initialize_queues</span>
+  <span class="ruby-ivar">@workers</span> = []
+  <span class="ruby-ivar">@num_workers</span> = <span class="ruby-value">6</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-artifact_usage_search" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">artifact_usage_search</span><span
+            class="method-args">(from: nil, to: nil, repos: nil, threads: 4)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Search for an artifact by its usage</p>
+
+<p>@example Search for all repositories with the given usage statistics</p>
+
+<pre class="ruby"><span class="ruby-constant">Artifact</span>.<span class="ruby-identifier">usage_search</span>(
+  <span class="ruby-value">notUsedSince:</span> <span class="ruby-value">1388534400000</span>,
+  <span class="ruby-value">createdBefore:</span> <span class="ruby-value">1388534400000</span>,
+)
+</pre>
+
+<p>@example Search for all artifacts with the given usage statistics in a repo</p>
+
+<pre class="ruby"><span class="ruby-constant">Artifact</span>.<span class="ruby-identifier">usage_search</span>(
+  <span class="ruby-value">notUsedSince:</span> <span class="ruby-value">1388534400000</span>,
+  <span class="ruby-value">createdBefore:</span> <span class="ruby-value">1388534400000</span>,
+  <span class="ruby-value">repos:</span> <span class="ruby-string">&#39;libs-release-local&#39;</span>,
+)
+</pre>
+
+<p>@param [Hash] options</p>
+
+<pre class="ruby"><span class="ruby-identifier">the</span> <span class="ruby-identifier">list</span> <span class="ruby-identifier">of</span> <span class="ruby-identifier">options</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">search</span> <span class="ruby-identifier">with</span>
+</pre>
+
+<p>@option options [Artifactory::Client] :client</p>
+
+<pre class="ruby"><span class="ruby-identifier">the</span> <span class="ruby-identifier">client</span> <span class="ruby-identifier">object</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">make</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">request</span> <span class="ruby-identifier">with</span>
+</pre>
+
+<p>@option options [Long] :notUsedSince</p>
+
+<pre>the last downloaded cutoff date of the artifact to search for (millis since epoch)</pre>
+
+<p>@option options [Long] :createdBefore</p>
+
+<pre>the creation cutoff date of the artifact to search for (millis since epoch)</pre>
+
+<p>@option options [String, Array&lt;String&gt;] :repos</p>
+
+<pre class="ruby"><span class="ruby-identifier">the</span> <span class="ruby-identifier">list</span> <span class="ruby-identifier">of</span> <span class="ruby-identifier">repos</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">search</span>
+</pre>
+
+<p>@return [Array&lt;Resource::Artifact&gt;]</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> <span class="ruby-identifier">list</span> <span class="ruby-identifier">of</span> <span class="ruby-identifier">artifacts</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">match</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">query</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="artifact_usage_search-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 173</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">artifact_usage_search</span>(<span class="ruby-value">from:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">to:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">repos:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">threads:</span> <span class="ruby-value">4</span>)
+  <span class="ruby-identifier">to</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">to</span>.<span class="ruby-identifier">nil?</span>
+
+  <span class="ruby-identifier">params</span> = {
+    <span class="ruby-value">dateFields:</span> <span class="ruby-string">&#39;created,lastModified,lastDownloaded&#39;</span>,
+    <span class="ruby-value">from:</span> <span class="ruby-identifier">from</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Time</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">from</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">from</span>.<span class="ruby-identifier">to_i</span>,
+    <span class="ruby-value">to:</span> <span class="ruby-identifier">to</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Time</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">to</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">to</span>.<span class="ruby-identifier">to_i</span>
+  }
+  <span class="ruby-identifier">repos</span> = <span class="ruby-identifier">repos</span>.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;,&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">repos</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:repos</span>] = <span class="ruby-identifier">repos</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">repos</span>.<span class="ruby-identifier">nil?</span>
+
+  <span class="ruby-identifier">result</span> = <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-identifier">debuglog</span>(<span class="ruby-node">&quot;[DEBUG] Making Artifactory request /api/search/dates for #{params.inspect}&quot;</span>)
+  <span class="ruby-identifier">timing</span> = {}
+  <span class="ruby-identifier">timing</span>[<span class="ruby-value">:search</span>] = <span class="ruby-constant">Benchmark</span>.<span class="ruby-identifier">measure</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@artifactory_client</span>.<span class="ruby-identifier">get</span>(<span class="ruby-string">&quot;/api/search/dates&quot;</span>, <span class="ruby-identifier">params</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPError</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">err</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">err</span>.<span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">404</span>
+        <span class="ruby-identifier">debuglog</span> <span class="ruby-string">&quot;  HTTP 404 Not Found fetching: /api/search/dates -- assuming no assets for this date range&quot;</span>
+        <span class="ruby-identifier">result</span> = []
+        <span class="ruby-comment">#Pry::rescued(err) if defined?(Pry::rescue)</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;HTTP Error while performing an artifact usage search: #{err}&quot;</span>
+        <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">err</span>.<span class="ruby-identifier">full_message</span>
+        <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Parameters were: #{params.inspect}&quot;</span>
+        <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Caused by #{err.cause.full_message}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">err</span>.<span class="ruby-identifier">cause</span>
+        <span class="ruby-constant">Pry</span><span class="ruby-operator">::</span><span class="ruby-identifier">rescued</span>(<span class="ruby-identifier">err</span>) <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-constant">Pry</span><span class="ruby-operator">::</span><span class="ruby-identifier">rescue</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">debuglog</span>(<span class="ruby-node">&quot;[DEBUG] Got #{result[&quot;results&quot;].length} results from search in #{timing[:search].real} seconds&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">timing</span>[<span class="ruby-value">:fetch</span>] = <span class="ruby-constant">Benchmark</span>.<span class="ruby-identifier">measure</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">threads</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">result</span> = <span class="ruby-identifier">discover_artifacts_from_search</span>(<span class="ruby-identifier">result</span>[<span class="ruby-string">&quot;results&quot;</span>], <span class="ruby-value">threads:</span> <span class="ruby-identifier">threads</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">result</span> = <span class="ruby-identifier">result</span>[<span class="ruby-string">&quot;results&quot;</span>].<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">artifact</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">a</span> = <span class="ruby-keyword">nil</span>
+          <span class="ruby-identifier">retries</span> = <span class="ruby-value">10</span>
+          <span class="ruby-keyword">while</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">retries</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+            <span class="ruby-keyword">begin</span>
+              <span class="ruby-identifier">retries</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+              <span class="ruby-identifier">a</span> = <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Cleaner</span><span class="ruby-operator">::</span><span class="ruby-constant">DiscoveredArtifact</span>.<span class="ruby-identifier">from_url</span>(<span class="ruby-identifier">artifact</span>[<span class="ruby-string">&quot;uri&quot;</span>], <span class="ruby-value">client:</span> <span class="ruby-ivar">@artifactory_client</span>)
+              <span class="ruby-identifier">a</span>.<span class="ruby-identifier">last_downloaded</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">artifact</span>[<span class="ruby-string">&quot;lastDownloaded&quot;</span>]) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">artifact</span>[<span class="ruby-string">&quot;lastDownloaded&quot;</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span>
+            <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">OpenTimeout</span>, <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">ConnectionError</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">err</span>
+              <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;[WARN] Connection Failure attempting to reach Artifactory API: #{err}&quot;</span>
+              <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;  Parameters were: #{params.inspect}&quot;</span>
+              <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;  Caused by #{err.cause.full_message}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">err</span>.<span class="ruby-identifier">cause</span>
+              <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;  Retrying in 10 seconds&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">retries</span>
+              <span class="ruby-identifier">sleep</span> <span class="ruby-value">10</span>
+            <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPError</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">err</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">err</span>.<span class="ruby-identifier">code</span> <span class="ruby-operator">==</span> <span class="ruby-value">404</span>
+                <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;[WARN] HTTP 404 Not Found fetching: #{artifact[&quot;uri&quot;]}&quot;</span>
+                <span class="ruby-identifier">retries</span> = <span class="ruby-value">0</span>
+              <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">retries</span> = <span class="ruby-identifier">min</span>(<span class="ruby-identifier">retries</span>, <span class="ruby-value">1</span>)
+                <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;[ERROR] HTTP Error while fetching an artifact from a usage search: #{err}&quot;</span>
+                <span class="ruby-identifier">debuglog</span> <span class="ruby-identifier">err</span>.<span class="ruby-identifier">full_message</span>
+                <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;  Artifact was: #{artifact.inspect}&quot;</span>
+                <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;  Parameters were: #{params.inspect}&quot;</span>
+                <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;  Caused by #{err.cause.full_message}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">err</span>.<span class="ruby-identifier">cause</span>
+                <span class="ruby-constant">Pry</span><span class="ruby-operator">::</span><span class="ruby-identifier">rescued</span>(<span class="ruby-identifier">err</span>) <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-constant">Pry</span><span class="ruby-operator">::</span><span class="ruby-identifier">rescue</span>)
+                <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;  Will retry download once&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">retries</span>
+              <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">end</span>
+          <span class="ruby-keyword">end</span>
+          <span class="ruby-identifier">a</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">result</span>.<span class="ruby-identifier">compact!</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">debuglog</span>(<span class="ruby-node">&quot;[DEBUG][Perfdata] Artifactory request /api/search/dates timing: #{timing[:search]}&quot;</span>)
+  <span class="ruby-identifier">debuglog</span>(<span class="ruby-node">&quot;[DEBUG][Perfdata] Fetching artifacts timing: #{timing[:fetch]}&quot;</span>)
+  <span class="ruby-identifier">total_time</span> = <span class="ruby-identifier">timing</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">reduce</span>(<span class="ruby-value">0</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">real</span>}
+  <span class="ruby-identifier">debuglog</span>(<span class="ruby-node">&quot;[DEBUG] #{result.length} artifacts fetched in #{total_time.round 2} seconds&quot;</span>)
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-bucketize_artifacts" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">bucketize_artifacts</span><span
+            class="method-args">(from: nil, to: nil, increment: 30 * 24 * 3600, repos: nil, buckets: nil, threads: 4)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="bucketize_artifacts-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 268</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">bucketize_artifacts</span>(<span class="ruby-value">from:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">to:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">increment:</span> <span class="ruby-value">30</span> <span class="ruby-operator">*</span> <span class="ruby-value">24</span> <span class="ruby-operator">*</span> <span class="ruby-value">3600</span>, <span class="ruby-value">repos:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">buckets:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">threads:</span> <span class="ruby-value">4</span>)
+  <span class="ruby-identifier">buckets</span> = <span class="ruby-constant">ArtifactBucketCollection</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">buckets</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">ArtifactBucketCollection</span>
+  <span class="ruby-identifier">with_discovered_artifacts</span>(<span class="ruby-value">from:</span> <span class="ruby-identifier">from</span>, <span class="ruby-value">to:</span> <span class="ruby-identifier">to</span>, <span class="ruby-value">repos:</span> <span class="ruby-identifier">repos</span>, <span class="ruby-value">increment:</span> <span class="ruby-identifier">increment</span>, <span class="ruby-value">threads:</span> <span class="ruby-identifier">threads</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">artifact</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">buckets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">artifact</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">buckets</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-bucketized_artifact_report" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">bucketized_artifact_report</span><span
+            class="method-args">(buckets)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Given a <a
+href="ArtifactBucketCollection.html">Artifactory::Cleaner::ArtifactBucketCollection</a>,
+return a String summarizing the contents</p>
+
+<p>TODO: This really should be a method on <a
+href="ArtifactBucketCollection.html">Artifactory::Cleaner::ArtifactBucketCollection</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="bucketized_artifact_report-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 280</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">bucketized_artifact_report</span>(<span class="ruby-identifier">buckets</span>)
+  <span class="ruby-identifier">total_size</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">total_count</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">buckets</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">bucket</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">total_size</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">bucket</span>.<span class="ruby-identifier">filesize</span>
+    <span class="ruby-identifier">total_count</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">bucket</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-node">&quot;#{bucket.length} artifacts between #{bucket.min} and #{bucket.max} days, totaling #{Artifactory::Cleaner::Util::filesize bucket.filesize}&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">lines</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;Total: #{Artifactory::Cleaner::Util::filesize total_size} across #{total_count} artifacts&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-catagorize_old_assets" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">catagorize_old_assets</span><span
+            class="method-args">(days)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Deprecated, do not use</p>
+          
+          
+
+          
+          <div class="method-source-code" id="catagorize_old_assets-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 317</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">catagorize_old_assets</span>(<span class="ruby-identifier">days</span>)
+  <span class="ruby-identifier">buckets</span> = {
+      <span class="ruby-value">730</span> <span class="ruby-operator">=&gt;</span> {<span class="ruby-value">count:</span> <span class="ruby-value">0</span>, <span class="ruby-value">size:</span> <span class="ruby-value">0</span>},
+      <span class="ruby-value">365</span> <span class="ruby-operator">=&gt;</span> {<span class="ruby-value">count:</span> <span class="ruby-value">0</span>, <span class="ruby-value">size:</span> <span class="ruby-value">0</span>},
+      <span class="ruby-value">180</span> <span class="ruby-operator">=&gt;</span> {<span class="ruby-value">count:</span> <span class="ruby-value">0</span>, <span class="ruby-value">size:</span> <span class="ruby-value">0</span>},
+      <span class="ruby-value">90</span>  <span class="ruby-operator">=&gt;</span> {<span class="ruby-value">count:</span> <span class="ruby-value">0</span>, <span class="ruby-value">size:</span> <span class="ruby-value">0</span>},
+      <span class="ruby-value">30</span>  <span class="ruby-operator">=&gt;</span> {<span class="ruby-value">count:</span> <span class="ruby-value">0</span>, <span class="ruby-value">size:</span> <span class="ruby-value">0</span>},
+  }
+  <span class="ruby-identifier">discover_repos</span>
+  <span class="ruby-ivar">@repos</span>[<span class="ruby-value">:local</span>].<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">id</span>,<span class="ruby-identifier">repo</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">pkgs</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">purgable</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">timings</span> = <span class="ruby-constant">Benchmark</span>.<span class="ruby-identifier">bm</span>(<span class="ruby-value">12</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">bm</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;Searching Repo #{id}:&quot;</span>
+        <span class="ruby-identifier">old_packages</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">bm</span>.<span class="ruby-identifier">report</span>(<span class="ruby-string">&#39;api call&#39;</span>) {
+          <span class="ruby-identifier">old_packages</span> = <span class="ruby-ivar">@artifactory_client</span>.<span class="ruby-identifier">artifact_usage_search</span>(
+              <span class="ruby-value">notUsedSince:</span> (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-value">24</span> <span class="ruby-operator">*</span> <span class="ruby-value">3600</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">days</span>) <span class="ruby-operator">*</span> <span class="ruby-value">1000</span>,
+              <span class="ruby-value">createdBefore:</span> (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-value">24</span> <span class="ruby-operator">*</span> <span class="ruby-value">3600</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">days</span>) <span class="ruby-operator">*</span> <span class="ruby-value">1000</span>,
+              <span class="ruby-value">repos:</span> <span class="ruby-identifier">id</span>
+          )
+        }
+        <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;  Artifactory search returned #{old_packages.length} assets older than #{days}...&quot;</span>
+        <span class="ruby-identifier">bm</span>.<span class="ruby-identifier">report</span>(<span class="ruby-string">&#39;loop&#39;</span>) { <span class="ruby-identifier">old_packages</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pkg</span>,<span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">pkgs</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+          <span class="ruby-identifier">uri</span> = <span class="ruby-constant">URI</span>(<span class="ruby-identifier">pkg</span>.<span class="ruby-identifier">uri</span>)
+          <span class="ruby-identifier">purgable</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">pkg</span>.<span class="ruby-identifier">size</span>
+          <span class="ruby-comment"># Calculate the age of this package in days and increment the bucket it belongs in</span>
+          <span class="ruby-identifier">age</span> = (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">pkg</span>.<span class="ruby-identifier">last_modified</span>)<span class="ruby-operator">/</span>(<span class="ruby-value">3600</span><span class="ruby-operator">*</span><span class="ruby-value">24</span>)
+          <span class="ruby-keyword">if</span> (<span class="ruby-identifier">bucket</span> = <span class="ruby-identifier">buckets</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">find</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">age</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">v</span> })
+            <span class="ruby-identifier">buckets</span>[<span class="ruby-identifier">bucket</span>][<span class="ruby-value">:count</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+            <span class="ruby-identifier">buckets</span>[<span class="ruby-identifier">bucket</span>][<span class="ruby-value">:size</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">pkg</span>.<span class="ruby-identifier">size</span>
+          <span class="ruby-keyword">end</span>
+          <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;  ##{i}: #{File.basename(uri.path)} #{Util.filesize pkg.size} Created #{pkg.created} Modified #{pkg.last_modified}&quot;</span>
+        <span class="ruby-keyword">end</span> }
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;Found #{pkgs} assets from #{id} older than #{days} days totaling #{Util.filesize purgable} in #{timings.reduce {|sum, t| sum + t.real}} seconds&quot;</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">ex</span>
+      <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Caught an exception trying to handle repo #{id}: #{ex}&quot;</span>
+      <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">full_message</span>
+      <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Caused by #{ex.cause.full_message}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">cause</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">buckets</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">age</span>,<span class="ruby-identifier">bucket</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;#{bucket[:count]} packages older than #{age} days, totaling #{Util.filesize bucket[:size]}&quot;</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">buckets</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-discover_artifacts_from_search" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">discover_artifacts_from_search</span><span
+            class="method-args">(artifact_list, threads: 4)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Given a list of Artifacts, fetch information about them and return a list
+of <a
+href="DiscoveredArtifact.html">Artifactory::Cleaner::DiscoveredArtifact</a>
+instances</p>
+
+<p>This is a helper function for <a
+href="Controller.html#method-i-artifact_usage_search">artifact_usage_search</a></p>
+
+<p>TODO: Document format of the `artifact_list` parameter</p>
+
+<p>This method may throw network errors from the underlying <a
+href="../../Artifactory.html">Artifactory</a> client</p>
+
+<p>This method is multi-threaded and will spawn workers in order to make
+multiple concurrent HTTP connections to the <a
+href="../../Artifactory.html">Artifactory</a> API. The number of threads
+can be tuned with the +`threads`+ parameter. Be careful not to cause
+excessive load on the <a href="../../Artifactory.html">Artifactory</a> API!</p>
+          
+          
+
+          
+          <div class="method-source-code" id="discover_artifacts_from_search-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 96</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">discover_artifacts_from_search</span>(<span class="ruby-identifier">artifact_list</span>, <span class="ruby-value">threads:</span> <span class="ruby-value">4</span>)
+  <span class="ruby-identifier">result</span> = []
+  <span class="ruby-identifier">timing</span> = {}
+  <span class="ruby-comment">#kill_threads</span>
+  <span class="ruby-ivar">@num_workers</span> = <span class="ruby-identifier">threads</span>
+  <span class="ruby-identifier">timing</span>[<span class="ruby-value">:enqueue</span>] = <span class="ruby-constant">Benchmark</span>.<span class="ruby-identifier">measure</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">artifact_list</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">queue_discovery_of_artifact</span> <span class="ruby-identifier">a</span>}
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">timing</span>[<span class="ruby-value">:dequeue</span>] = <span class="ruby-constant">Benchmark</span>.<span class="ruby-identifier">measure</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">until</span> <span class="ruby-ivar">@discovery_queues</span>.<span class="ruby-identifier">incoming</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@discovery_queues</span>.<span class="ruby-identifier">outgoing</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-ivar">@workers</span>.<span class="ruby-identifier">any?</span> <span class="ruby-operator">&amp;</span><span class="ruby-value">:working?</span>
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-identifier">item</span> = <span class="ruby-ivar">@discovery_queues</span>.<span class="ruby-identifier">outgoing</span>.<span class="ruby-identifier">pop</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Resource</span><span class="ruby-operator">::</span><span class="ruby-constant">Artifact</span>
+          <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item</span>
+          <span class="ruby-comment">#debuglog &quot;[DEBUG] Discovered #{item} from a child thread&quot;</span>
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Error</span>
+          <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;[ERROR] Error from artifact fetch: #{item}&quot;</span>
+          <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">full_message</span>
+          <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Caused by #{item.cause.full_message}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">cause</span>
+        <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">nil?</span>
+          <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;[ERROR] Got #{item} back from the discovery queue, expected an Artifactory::Resource::Artifact&quot;</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">processing_ex</span>
+        <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;[ERROR] Caught an exception when processing from the outgoing discovery queue: #{processing_ex}&quot;</span>
+        <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">processing_ex</span>.<span class="ruby-identifier">full_message</span>
+        <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Caused by #{processing_ex.cause.full_message}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">processing_ex</span>.<span class="ruby-identifier">cause</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">kill_threads</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">ex</span>
+    <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;[ERROR] Caught an exception when killing threads: #{ex}&quot;</span>
+    <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">full_message</span>
+    <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Caused by #{ex.cause.full_message}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">cause</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">debuglog</span>(<span class="ruby-node">&quot;[DEBUG][Perfdata] Enqueue URLs for workers to discover: #{timing[:enqueue]}&quot;</span>)
+  <span class="ruby-identifier">debuglog</span>(<span class="ruby-node">&quot;[DEBUG][Perfdata] Dequeue found Artifacts from workers: #{timing[:dequeue]}&quot;</span>)
+  <span class="ruby-identifier">total_time</span> = <span class="ruby-identifier">timing</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">reduce</span>(<span class="ruby-value">0</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">real</span>}
+  <span class="ruby-identifier">debuglog</span>(<span class="ruby-node">&quot;[DEBUG] #{result.length} artifacts fetched in #{total_time.round 2} seconds&quot;</span>)
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-discover_repos" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">discover_repos</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return an ordered structure of repositories from the <a
+href="../../Artifactory.html">Artifactory</a> server.</p>
+
+<p>This method will query <a href="../../Artifactory.html">Artifactory</a> and
+fetch information about all available repositories. The result returned is
+a Hash with three keys, one for each repo type: `:local`, `:remote` and
+`:virtual` Under each of these keys is a hash mapping repo keys to their
+Artifactory::Resource::Repository objects</p>
+
+<p>This method may throw network errors from the underlying <a
+href="../../Artifactory.html">Artifactory</a> client</p>
+
+<p>This method is not multi-threaded</p>
+          
+          
+
+          
+          <div class="method-source-code" id="discover_repos-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">discover_repos</span>
+  <span class="ruby-identifier">timing</span> = {}
+  <span class="ruby-ivar">@repos</span> = {
+      <span class="ruby-value">local:</span> {},
+      <span class="ruby-value">remote:</span> {},
+      <span class="ruby-value">virtual:</span> {},
+  }
+  <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">timing</span>[<span class="ruby-value">:loop</span>] = <span class="ruby-constant">Benchmark</span>.<span class="ruby-identifier">measure</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@artifactory_client</span>.<span class="ruby-identifier">repository_all</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">repo</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;[DEBUG] Found #{repo.package_type} repo: #{repo.key}&quot;</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">repo</span>.<span class="ruby-identifier">rclass</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;remote&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">repo</span>.<span class="ruby-identifier">url</span>
+        <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot; +-&gt; repo #{repo.key} is a mirror of remote at #{repo.url}&quot;</span>
+        <span class="ruby-ivar">@repos</span>[<span class="ruby-value">:remote</span>][<span class="ruby-identifier">repo</span>.<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">repo</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">repo</span>.<span class="ruby-identifier">rclass</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;virtual&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">repo</span>.<span class="ruby-identifier">repositories</span>
+        <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot; +-&gt; repo #{repo.key} is a virtual repo containing: #{repo.repositories.join &#39;, &#39;}&quot;</span>
+        <span class="ruby-ivar">@repos</span>[<span class="ruby-value">:remote</span>][<span class="ruby-identifier">repo</span>.<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">repo</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-ivar">@repos</span>[<span class="ruby-value">:local</span>][<span class="ruby-identifier">repo</span>.<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">repo</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">debuglog</span>(<span class="ruby-node">&quot;[DEBUG][Perfdata] Fetched #{i} repos; timing: #{timing[:loop]}&quot;</span>)
+  <span class="ruby-ivar">@repos</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-verbose-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verbose=</span><span
+            class="method-args">(val)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Enable or disable verbose mode (see <a
+href="Controller.html#method-i-verbose-3F">#verbose?</a>) When verbose mode
+is enabled, the controller will print debugging and status information to
+STDERR</p>
+          
+          
+
+          
+          <div class="method-source-code" id="verbose-3D-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verbose=</span>(<span class="ruby-identifier">val</span>)
+  <span class="ruby-ivar">@verbose</span> = <span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">val</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-verbose-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verbose?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Is verbose output enabled? If so, the controller will print debugging and
+status information to STDERR</p>
+          
+          
+
+          
+          <div class="method-source-code" id="verbose-3F-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verbose?</span>
+  <span class="ruby-ivar">@verbose</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-with_discovered_artifacts" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">with_discovered_artifacts</span><span
+            class="method-args">(from: nil, to: nil, repos: nil, increment: 30 * 24 * 3600, threads: 4) { |pkg| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="with_discovered_artifacts-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 256</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">with_discovered_artifacts</span>(<span class="ruby-value">from:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">to:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">repos:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">increment:</span> <span class="ruby-value">30</span> <span class="ruby-operator">*</span> <span class="ruby-value">24</span> <span class="ruby-operator">*</span> <span class="ruby-value">3600</span>, <span class="ruby-value">threads:</span> <span class="ruby-value">4</span>)
+  <span class="ruby-identifier">chunk_end</span> = <span class="ruby-identifier">to</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">chunk_end</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">from</span>
+    <span class="ruby-identifier">chunk_start</span> = <span class="ruby-identifier">chunk_end</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">increment</span>
+    <span class="ruby-identifier">chunk_start</span> = <span class="ruby-identifier">from</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">chunk_start</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">from</span>
+    <span class="ruby-identifier">artifact_usage_search</span>(<span class="ruby-value">from:</span> <span class="ruby-identifier">chunk_start</span>, <span class="ruby-value">to:</span> <span class="ruby-identifier">chunk_end</span>, <span class="ruby-value">repos:</span> <span class="ruby-identifier">repos</span>, <span class="ruby-value">threads:</span> <span class="ruby-identifier">threads</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pkg</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">yield</span> <span class="ruby-identifier">pkg</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">chunk_end</span> = <span class="ruby-identifier">chunk_start</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-yaml_format" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">yaml_format</span><span
+            class="method-args">(artifact, indent = 0)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a YAML representation of a module <a
+href="DiscoveredArtifact.html">Artifactory::Cleaner::DiscoveredArtifact</a></p>
+
+<p>Provide a <a
+href="DiscoveredArtifact.html">Artifactory::Cleaner::DiscoveredArtifact</a>
+and this method will return a String containing a YAML representation of
+the properties of the <a
+href="DiscoveredArtifact.html">DiscoveredArtifact</a>. If the `indent`
+parameter is provided, then a YAML fragment will be returned, indented by
+`indent` spaces. This allows for “streaming” a list of Artifact YAML to an
+IOStream</p>
+          
+          
+
+          
+          <div class="method-source-code" id="yaml_format-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 298</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">yaml_format</span>(<span class="ruby-identifier">artifact</span>, <span class="ruby-identifier">indent</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-identifier">properties</span> = [<span class="ruby-value">:uri</span>, <span class="ruby-value">:last_downloaded</span>, <span class="ruby-value">:repo</span>, <span class="ruby-value">:created</span>, <span class="ruby-value">:last_modified</span>, <span class="ruby-value">:last_updated</span>, <span class="ruby-value">:download_uri</span>, <span class="ruby-value">:mime_type</span>, <span class="ruby-value">:size</span>, <span class="ruby-value">:checksums</span> ]
+  <span class="ruby-identifier">result</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">properties</span>.<span class="ruby-identifier">each_with_object</span>({}) {<span class="ruby-operator">|</span><span class="ruby-identifier">prop</span>,<span class="ruby-identifier">export</span><span class="ruby-operator">|</span> <span class="ruby-identifier">export</span>[<span class="ruby-identifier">prop</span>] = <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">prop</span>) })
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">indent</span>
+    <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">result</span>.<span class="ruby-identifier">each_line</span>.<span class="ruby-identifier">reduce</span>(<span class="ruby-string">&#39;&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">str</span>,<span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>
+        <span class="ruby-identifier">str</span> <span class="ruby-operator">+</span> (<span class="ruby-string">&#39; &#39;</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">indent</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">line</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
+          <span class="ruby-identifier">str</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">line</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">str</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

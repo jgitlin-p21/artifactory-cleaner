@@ -1,5 +1,7 @@
 module Artifactory
   module Cleaner
-    VERSION = "0.9.0"
+    ##
+    # Version number of the Artifactory::Cleaner gem
+    VERSION = "0.9.1"
   end
 end

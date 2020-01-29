@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   
   spec.add_development_dependency "cucumber", '~> 1.3', '>= 1.3.20'
   spec.add_development_dependency "aruba", '~> 0.14'
+  spec.add_development_dependency "rdoc"
 
   spec.add_dependency "thor", '~> 1.0.1'
   spec.add_dependency "sysexits", '>= 1.2.0'

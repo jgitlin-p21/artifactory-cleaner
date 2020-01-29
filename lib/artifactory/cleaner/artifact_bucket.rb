@@ -3,6 +3,18 @@ require 'artifactory'
 
 module Artifactory
   module Cleaner
+
+    ##
+    # A collection of Artifacts within a date range
+    #
+    # An Artifactory::Cleaner::ArtifactBucket represents an "age bucket" when analyzing Artifact usage; Artifacts are
+    # grouped into buckets of time to aid in developing an archive strategy.
+    #
+    # Artifactory::Cleaner::ArtifactBucket is largely just an Array of Artifactory::Resource::Artifact instances, with
+    # logic to maintain a filesize count and properties fr the age of the artifacts within.
+    #
+    # This class works with the Artifactory::Cleaner::ArtifactBucketCollection class, which maintains a collection of
+    # Artifactory::Cleaner::ArtifactBucket instances and handles selecting the proper one for a given Artifact
     class ArtifactBucket
       extend Forwardable
       include Enumerable

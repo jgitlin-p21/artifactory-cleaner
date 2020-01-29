@@ -1,6 +1,9 @@
 module Artifactory
   module Cleaner
     module Util
+      ##
+      # Given a size in bytes, return a "human readable" size with a unit suffix (MiB, GiB)
+      #
       # Taken from https://stackoverflow.com/a/47486815/75801
       # Used instead of a gem due to simplicity and speed
       def self.filesize(size)

@@ -1,5 +1,7 @@
 module Artifactory
   module Cleaner
+    ##
+    # Helper class representing Threads spawned to discover Artifacts
     class DiscoveryWorker
       def initialize(processing_queues, artifactory_client)
         @running = false
@@ -9,18 +11,31 @@ module Artifactory
         @artifactory_client = artifactory_client
       end
 
+      ##
+      # Is this DiscoveryWorker running, listening to the queue and processing requests
       def running?
         @running
       end
 
+      ##
+      # Is this DiscoveryWorker currently processing a request?
+      #
+      # when #running? is true and #working? is not, then the worker is idle, blocked, waiting for an action.
+      #
+      # when #working? is true, there will be at least one more result pushed to the outgoing queue when the current
+      # request finishes
       def working?
         @working
       end
 
+      ##
+      # Is the Thread for this worker alive?
       def alive?
         @thread ? @thread.alive? : false
       end
 
+      ##
+      # Start the DiscoveryWorker and begin processing from the queue
       def start
         @running = true
         @thread = Thread.new do
@@ -31,11 +46,15 @@ module Artifactory
         self
       end
 
+      ##
+      # Stop the Thread and re-join the parent
       def shutdown(timeout = 300)
         @running = false
         @thread.join(timeout) if @thread and @thread.alive?
       end
 
+      ##
+      # Forcibly kill the Thread and destroy it
       def stop
         @running = false
         @thread.kill if @thread and @thread.alive?
@@ -43,27 +62,38 @@ module Artifactory
       end
       alias_method :kill, :stop
 
+      ##
+      # String representation of this DiscoveryWorker and it's status
       def to_s
         "#<#{self.class}:#{self.object_id}; #{running? ? 'running' : 'not running'}, #{working? ? 'working' : 'idle'}, #{alive? ? 'alive' : 'dead'}>"
       end
 
       private
 
+      ##
+      # debug / verbose logging
+      # TODO: add a verbose conditional, maybe a different log destination
       def log(msg)
         STDERR.puts msg
       end
 
+      ##
+      # pop from the incoming queue, process, push result to outgoing
       def process(payload)
         @working = true
         begin
           @queues.outgoing.push discover_artifact_from payload
         rescue => ex
-          return ex
+          return ex # TODO: Should this be pushed to the outgoing queue instead?
         ensure
           @working = false
         end
       end
 
+      ##
+      # main method, given artifact info, generate a Artifactory::Cleaner::DiscoveredArtifact
+      #
+      # this method makes HTTP calls to the Artifactory API
       def discover_artifact_from(artifact_info, retries = 10)
         artifact = nil
         while retries > 0

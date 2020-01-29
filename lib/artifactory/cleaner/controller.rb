@@ -37,14 +37,23 @@ module Artifactory
         @verbose
       end
 
+      ##
+      # Enable or disable verbose mode (see Controller#verbose?)
+      # When verbose mode is enabled, the controller will print debugging and status information to STDERR
       def verbose=(val)
         @verbose = !!val
       end
 
-      def debuglog(msg)
-        STDERR.puts msg if @verbose
-      end
-
+      ##
+      # Return an ordered structure of repositories from the Artifactory server.
+      #
+      # This method will query Artifactory and fetch information about all available repositories. The result returned
+      # is a Hash with three keys, one for each repo type: `:local`, `:remote` and `:virtual`
+      # Under each of these keys is a hash mapping repo keys to their Artifactory::Resource::Repository objects
+      #
+      # This method may throw network errors from the underlying Artifactory client
+      #
+      # This method is not multi-threaded
       def discover_repos
         timing = {}
         @repos = {
@@ -72,8 +81,18 @@ module Artifactory
         @repos
       end
 
-      ##################################################################################################################
-
+      ##
+      # Given a list of Artifacts, fetch information about them and return a list of Artifactory::Cleaner::DiscoveredArtifact instances
+      #
+      # This is a helper function for #artifact_usage_search
+      #
+      # TODO: Document format of the `artifact_list` parameter
+      #
+      # This method may throw network errors from the underlying Artifactory client
+      #
+      # This method is multi-threaded and will spawn workers in order to make multiple concurrent HTTP connections to
+      # the Artifactory API. The number of threads can be tuned with the +`threads`+ parameter. Be careful not to
+      # cause excessive load on the Artifactory API!
       def discover_artifacts_from_search(artifact_list, threads: 4)
         result = []
         timing = {}
@@ -120,15 +139,7 @@ module Artifactory
         result
       end
 
-      def queue_discovery_of_artifact(artifact_data)
-        @discovery_queues.incoming.push(artifact_data)
-        #debuglog "[DEBUG] Queued #{artifact_data['uri']} for discovery"
-        spawn_threads
-      end
-
-      ##################################################################################################################
-
-      #
+      ##
       # Search for an artifact by its usage
       #
       # @example Search for all repositories with the given usage statistics
@@ -262,6 +273,10 @@ module Artifactory
         buckets
       end
 
+      ##
+      # Given a Artifactory::Cleaner::ArtifactBucketCollection, return a String summarizing the contents
+      #
+      # TODO: This really should be a method on Artifactory::Cleaner::ArtifactBucketCollection
       def bucketized_artifact_report(buckets)
         total_size = 0
         total_count = 0
@@ -273,6 +288,13 @@ module Artifactory
         lines << "Total: #{Artifactory::Cleaner::Util::filesize total_size} across #{total_count} artifacts"
       end
 
+      ##
+      # Return a YAML representation of a module Artifactory::Cleaner::DiscoveredArtifact
+      #
+      # Provide a Artifactory::Cleaner::DiscoveredArtifact and this method will return a String containing a YAML
+      # representation of the properties of the DiscoveredArtifact. If the `indent` parameter is provided, then a YAML
+      # fragment will be returned, indented by `indent` spaces. This allows for "streaming" a list of Artifact YAML to
+      # an IOStream
       def yaml_format(artifact, indent = 0)
         properties = [:uri, :last_downloaded, :repo, :created, :last_modified, :last_updated, :download_uri, :mime_type, :size, :checksums ]
         result = YAML.dump(properties.each_with_object({}) {|prop,export| export[prop] = artifact.send(prop) })
@@ -289,7 +311,9 @@ module Artifactory
           end
         end
       end
-      
+
+      ##
+      # Deprecated, do not use
       def catagorize_old_assets(days)
         buckets = {
             730 => {count: 0, size: 0},
@@ -342,14 +366,26 @@ module Artifactory
         buckets
       end
 
+      ##################################################################################################################
+
       private
 
+      ##
+      # debug/verbose logging
+      def debuglog(msg)
+        STDERR.puts msg if @verbose
+      end
+
+      ##
+      # Initialize empty artifact discovery queues
       def initialize_queues
         @discovery_queues = ProcessingQueues.new
         @discovery_queues.incoming = Queue.new
         @discovery_queues.outgoing = Queue.new
       end
 
+      ##
+      # make sure we have the desired number of worker threads
       def spawn_threads
         while @workers.length < @num_workers
           @workers << DiscoveryWorker.new(@discovery_queues, @artifactory_client).start
@@ -357,6 +393,17 @@ module Artifactory
         end
       end
 
+      ##
+      # given artifact data, add it to the queue for processing and make sure we have workers to process it
+      def queue_discovery_of_artifact(artifact_data)
+        @discovery_queues.incoming.push(artifact_data)
+        #debuglog "[DEBUG] Queued #{artifact_data['uri']} for discovery"
+        spawn_threads
+      end
+
+      ##
+      # Forcibly terminate all threads
+      # TODO: add a graceful terminate method
       def kill_threads
         @workers.each &:kill
         @workers = []

@@ -3,6 +3,17 @@ require 'artifactory'
 
 module Artifactory
   module Cleaner
+
+    ##
+    # Organize Artifacts by age bucket for analysis
+    #
+    # An Artifactory::Cleaner::ArtifactBucketCollection represents "age buckets" used for analyzing Artifact usage.
+    # Artifacts are grouped into buckets of time to aid in developing an archive strategy. This class maintains a
+    # list of buckets and handles the logic for sorting Artifacts into those buckets.
+    #
+    # Artifactory::Cleaner::ArtifactBucketCollection is largely just an Array of Artifactory::Cleaner::ArtifactBucket
+    # instances, with logic to sort and select them and logic to distribute Artifactory::Resource::Artifact instances
+    # into the proper Artifactory::Cleaner::ArtifactBucket
     class ArtifactBucketCollection
       extend Forwardable
       include Enumerable

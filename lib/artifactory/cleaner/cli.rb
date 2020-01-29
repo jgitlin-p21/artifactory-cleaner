@@ -14,6 +14,7 @@ module Artifactory
     # to provide git command/subcommand style ARGV parsing
     #
     # @see exe/artifactory-cleaner
+    #
     # @see https://github.com/erikhuda/thor
     class CLI < Thor
       class_option :verbose, :aliases => %w(-v), :type => :boolean, :desc => "Verbose mode; print additional information to STDERR"

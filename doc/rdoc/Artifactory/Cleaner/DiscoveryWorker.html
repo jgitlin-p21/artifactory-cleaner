@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Artifactory::Cleaner::DiscoveryWorker - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/jquery.js"></script>
+<script src="../../js/darkfish.js"></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="../../Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-alive-3F">#alive?</a>
+    
+    <li ><a href="#method-i-kill">#kill</a>
+    
+    <li ><a href="#method-i-running-3F">#running?</a>
+    
+    <li ><a href="#method-i-shutdown">#shutdown</a>
+    
+    <li ><a href="#method-i-start">#start</a>
+    
+    <li ><a href="#method-i-stop">#stop</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+    <li ><a href="#method-i-working-3F">#working?</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Artifactory::Cleaner::DiscoveryWorker">
+  <h1 id="class-Artifactory::Cleaner::DiscoveryWorker" class="class">
+    class Artifactory::Cleaner::DiscoveryWorker
+  </h1>
+
+  <section class="description">
+    
+<p>Helper class representing Threads spawned to discover Artifacts</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(processing_queues, artifactory_client)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovery_worker.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">processing_queues</span>, <span class="ruby-identifier">artifactory_client</span>)
+  <span class="ruby-ivar">@running</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@working</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@thread</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@queues</span> = <span class="ruby-identifier">processing_queues</span>
+  <span class="ruby-ivar">@artifactory_client</span> = <span class="ruby-identifier">artifactory_client</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-alive-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">alive?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Is the Thread for this worker alive?</p>
+          
+          
+
+          
+          <div class="method-source-code" id="alive-3F-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovery_worker.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">alive?</span>
+  <span class="ruby-ivar">@thread</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">alive?</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-kill" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">kill</span><span
+            class="method-args">()</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="DiscoveryWorker.html#method-i-stop">stop</a>
+        </div>
+        
+      </div>
+
+    
+      <div id="method-i-running-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">running?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Is this <a href="DiscoveryWorker.html">DiscoveryWorker</a> running,
+listening to the queue and processing requests</p>
+          
+          
+
+          
+          <div class="method-source-code" id="running-3F-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovery_worker.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">running?</span>
+  <span class="ruby-ivar">@running</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-shutdown" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">shutdown</span><span
+            class="method-args">(timeout = 300)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Stop the Thread and re-join the parent</p>
+          
+          
+
+          
+          <div class="method-source-code" id="shutdown-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovery_worker.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shutdown</span>(<span class="ruby-identifier">timeout</span> = <span class="ruby-value">300</span>)
+  <span class="ruby-ivar">@running</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">timeout</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@thread</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">alive?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-start" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">start</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Start the <a href="DiscoveryWorker.html">DiscoveryWorker</a> and begin
+processing from the queue</p>
+          
+          
+
+          
+          <div class="method-source-code" id="start-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovery_worker.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">start</span>
+  <span class="ruby-ivar">@running</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-ivar">@thread</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">while</span> <span class="ruby-identifier">running?</span>
+      <span class="ruby-identifier">process</span> <span class="ruby-ivar">@queues</span>.<span class="ruby-identifier">incoming</span>.<span class="ruby-identifier">pop</span>(<span class="ruby-keyword">false</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-stop" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">stop</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Forcibly kill the Thread and destroy it</p>
+          
+          
+
+          
+          <div class="method-source-code" id="stop-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovery_worker.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">stop</span>
+  <span class="ruby-ivar">@running</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">kill</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@thread</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">alive?</span>
+  <span class="ruby-ivar">@thread</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="DiscoveryWorker.html#method-i-kill">kill</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>String representation of this <a
+href="DiscoveryWorker.html">DiscoveryWorker</a> and it&#39;s status</p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovery_worker.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
+  <span class="ruby-node">&quot;#&lt;#{self.class}:#{self.object_id}; #{running? ? &#39;running&#39; : &#39;not running&#39;}, #{working? ? &#39;working&#39; : &#39;idle&#39;}, #{alive? ? &#39;alive&#39; : &#39;dead&#39;}&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-working-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">working?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Is this <a href="DiscoveryWorker.html">DiscoveryWorker</a> currently
+processing a request?</p>
+
+<p>when <a href="DiscoveryWorker.html#method-i-running-3F">running?</a> is
+true and <a href="DiscoveryWorker.html#method-i-working-3F">working?</a> is
+not, then the worker is idle, blocked, waiting for an action.</p>
+
+<p>when <a href="DiscoveryWorker.html#method-i-working-3F">working?</a> is
+true, there will be at least one more result pushed to the outgoing queue
+when the current request finishes</p>
+          
+          
+
+          
+          <div class="method-source-code" id="working-3F-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovery_worker.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">working?</span>
+  <span class="ruby-ivar">@working</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
