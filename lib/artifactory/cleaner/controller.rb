@@ -312,6 +312,19 @@ module Artifactory
         end
       end
 
+      def archive_artifact(artifact, path)
+        debuglog "[DEBUG] downloading #{artifact} (#{artifact.uri}) to #{path}"
+        timing = Benchmark.measure do
+          artifact.download(path)
+        end
+        debuglog "[DEBUG] #{artifact.uri} #{Util.filesize artifact.size} downloaded in #{timing.real.round(2)} seconds (#{Util.filesize(artifact.size/timing.real)})/s"
+      end
+
+      def delete_artifact(artifact)
+        debuglog "[DEBUG] DELETE Artifact #{artifact} at #{artifact.uri}!"
+          artifact.delete
+      end
+
       ##
       # Deprecated, do not use
       def catagorize_old_assets(days)

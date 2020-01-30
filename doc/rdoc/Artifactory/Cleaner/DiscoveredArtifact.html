@@ -77,9 +77,13 @@
     
     <li ><a href="#method-i-earliest_date">#earliest_date</a>
     
+    <li ><a href="#method-i-filename">#filename</a>
+    
     <li ><a href="#method-i-last_downloaded">#last_downloaded</a>
     
     <li ><a href="#method-i-latest_date">#latest_date</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
     
   </ul>
 </div>
@@ -145,7 +149,7 @@ downloaded timestamps.</p>
 
           
           <div class="method-source-code" id="earliest_date_from-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">earliest_date_from</span>(<span class="ruby-identifier">artifact</span>)
   [
       <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">created</span>,
@@ -188,7 +192,7 @@ timestamps.</p>
 
           
           <div class="method-source-code" id="latest_date_from-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 49</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">latest_date_from</span>(<span class="ruby-identifier">artifact</span>)
   [
       <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">created</span>,
@@ -234,9 +238,43 @@ object?</p>
 
           
           <div class="method-source-code" id="earliest_date-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">earliest_date</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">earliest_date_from</span>(<span class="ruby-keyword">self</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">earliest_date_from</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-filename" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">filename</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="filename-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">filename</span>
+  <span class="ruby-identifier">uri</span> = <span class="ruby-constant">URI</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">uri</span>)
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">path</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -268,7 +306,7 @@ client (presumably to be installed)</p>
 
           
           <div class="method-source-code" id="last_downloaded-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 15</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 16</span>
 <span class="ruby-identifier">attribute</span> <span class="ruby-value">:last_downloaded</span>
 </pre>
           </div>
@@ -301,9 +339,42 @@ object?</p>
 
           
           <div class="method-source-code" id="latest_date-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">latest_date</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">latest_date_from</span>(<span class="ruby-keyword">self</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">latest_date_from</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
+  <span class="ruby-node">&quot;#&lt;DiscoveredArtifact #{filename} last accessed #{latest_date}&gt;&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

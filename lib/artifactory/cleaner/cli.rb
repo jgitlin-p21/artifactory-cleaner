@@ -145,6 +145,123 @@ module Artifactory
         end
       end
 
+      desc "archive", "Download artifacts meeting specific criteria"
+      option :dry_run, :aliases => '-n', :type => :boolean, :desc => "Do not actually download anything, only show what actions would have ben taken"
+      option :repos, :type => :array, :desc => "List of repos to download from; will download from all repos if omitted"
+      option :from, :type => :string, :default => (Time.now - 2*365*24*3600).to_s, :desc => "Earliest date to include in search; defaults to 2 years ago"
+      option :created_before, :type => :string, :desc => "Archive artifacts with a created date earlier than the provided value"
+      option :modified_before, :type => :string, :desc => "Archive artifacts with a last modified date earlier than the provided value"
+      option :downloaded_before, :type => :string, :desc => "Archive artifacts with a last downloaded date earlier than the provided value"
+      option :last_used_before, :type => :string, :desc => "Archive artifacts which were created, last modified and last downloaded before the provided date"
+      option :threads, :type => :numeric, :default => 4, :desc => "Number of threads to use for fetching artifact info"
+      option :archive_to, :type => :string, :desc => "Save artifacts to the provided path before deletion"
+      option :filter, :type => :string, :desc => "Specify a YAML file containing filter rules to use"
+      def archive
+        dates = parse_date_options
+        filter = load_artifact_filter
+        archive_to = parse_archive_option
+        if archive_to.nil?
+          STDERR.puts "Missing required `--archive-to` option specifying a a valid, existing directory under which to store archived artifacts"
+          exit Sysexits::EX_USAGE
+        end
+
+        report = {
+            archived: {
+                artifact_count: 0,
+                bytes: 0
+            },
+            skipped: {
+                artifact_count: 0,
+                bytes: 0
+            }
+        }
+
+        @controller.with_discovered_artifacts(from: dates[:from], to: dates[:to], repos: options.repos, threads: options.threads) do |artifact|
+          if artifact_meets_criteria(artifact, dates, filter)
+            if options.dry_run?
+              STDERR.puts "Would archive #{artifact} to #{archive_to}"
+            else
+              @controller.archive_artifact artifact, archive_to
+            end
+
+            report[:archived][:artifact_count] += 1
+            report[:archived][:bytes] += artifact.size
+          else
+            STDERR.puts "[DEBUG] Skipped #{artifact.inspect} because it did not meet the criteria" if options.verbose?
+            report[:skipped][:artifact_count] += 1
+            report[:skipped][:bytes] += artifact.size
+          end
+        end
+        report.each do |key,values|
+          puts "#{key} #{values[:artifact_count]} artifacts totaling #{Util.filesize values[:bytes]}"
+        end
+      end
+
+      desc "clean", "Delete artifacts meeting specific criteria"
+      option :dry_run, :aliases => '-n', :type => :boolean, :desc => "Do not actually delete anything, only show what actions would have ben taken"
+      option :repos, :type => :array, :desc => "List of repos to clean; will delete from all repos if omitted"
+      option :from, :type => :string, :default => (Time.now - 2*365*24*3600).to_s, :desc => "Earliest date to include in search; defaults to 2 years ago"
+      option :created_before, :type => :string, :desc => "Delete artifacts with a created date earlier than the provided value"
+      option :modified_before, :type => :string, :desc => "Delete artifacts with a last modified date earlier than the provided value"
+      option :downloaded_before, :type => :string, :desc => "Delete artifacts with a last downloaded date earlier than the provided value"
+      option :last_used_before, :type => :string, :desc => "Delete artifacts which were created, last modified and last downloaded before the provided date"
+      option :threads, :type => :numeric, :default => 4, :desc => "Number of threads to use for fetching artifact info"
+      option :archive_to, :type => :string, :desc => "Save artifacts to the provided path before deletion"
+      option :filter, :type => :string, :desc => "Specify a YAML file containing filter rules to use"
+      def clean
+        dates = parse_date_options
+        filter = load_artifact_filter
+        archive_to = parse_archive_option
+
+        # Ready to locate and delete artifacts
+        report = {
+            deleted: {
+                artifact_count: 0,
+                bytes: 0
+            },
+            archived: {
+                artifact_count: 0,
+                bytes: 0
+            },
+            skipped: {
+                artifact_count: 0,
+                bytes: 0
+            }
+        }
+
+        STDERR.puts "[DEBUG] controller.bucketize_artifacts from #{dates[:from]} to #{dates[:to]} repos #{options.repos}" if options.verbose?
+        @controller.with_discovered_artifacts(from: dates[:from], to: dates[:to], repos: options.repos, threads: options.threads) do |artifact|
+          if artifact_meets_criteria(artifact, dates, filter)
+            if archive_to
+              if options.dry_run?
+                STDERR.puts "Would archive #{artifact} to #{archive_to}"
+              else
+                @controller.archive_artifact artifact, archive_to
+              end
+
+              report[:archived][:artifact_count] += 1
+              report[:archived][:bytes] += artifact.size
+            end
+
+            if options.dry_run?
+              STDERR.puts "Would delete #{artifact}"
+            else
+              @controller.delete_artifact artifact
+            end
+
+            report[:deleted][:artifact_count] += 1
+            report[:deleted][:bytes] += artifact.size
+          else
+            STDERR.puts "[DEBUG] Skipped #{artifact.inspect} because it did not meet the criteria" if options.verbose?
+            report[:skipped][:artifact_count] += 1
+            report[:skipped][:bytes] += artifact.size
+          end
+        end
+        report.each do |key,values|
+          puts "#{key} #{values[:artifact_count]} artifacts totaling #{Util.filesize values[:bytes]}"
+        end
+      end
+
       private
 
       def load_conf_file(path)
@@ -157,6 +274,58 @@ module Artifactory
       def create_controller
         @controller = Artifactory::Cleaner::Controller.new(@artifactory_config)
         @controller.verbose = true if options.verbose?
+      end
+
+      def parse_date_options
+        dates = {}
+        dates[:from] = Time.parse(options.from) if options.from
+        dates[:created_before] = Time.parse(options.created_before) if options.created_before
+        dates[:modified_before] = Time.parse(options.modified_before) if options.modified_before
+        dates[:last_used_before] = Time.parse(options.last_used_before) if options.last_used_before
+        dates[:to] = [dates[:created_before], dates[:modified_before], dates[:downloaded_before], dates[:last_used_before]].compact.sort.first
+
+        if dates[:to].nil?
+          STDERR.puts "At least one end date for search must be provided (--created-before, --modified-before, --downloaded-before or --last-used-before)"
+          exit Sysexits::EX_USAGE
+        end
+
+        dates
+      end
+
+      def parse_archive_option
+        archive_to = options.archive_to
+        if archive_to
+          unless File.directory? archive_to
+            STDERR.puts "#{archive_to} is not a directory. `--archive-to` expects a valid, existing directory under which to store archived artifacts"
+            exit Sysexits::EX_USAGE
+          end
+          archive_to = File.realpath(archive_to)
+          unless File.directory? archive_to and File.writable? archive_to
+            STDERR.puts "Unable to write to directory #{archive_to} -- check permissions"
+            exit Sysexits::EX_CANTCREAT
+          end
+        end
+        archive_to
+      end
+
+      def load_artifact_filter
+        filter = ArtifactFilter.new
+        if options.filter
+          unless File.exist? options.filter and File.readable? options.filter
+            STDERR.puts "Unable to read specified filter file #{options.filter}"
+            exit Sysexits::EX_USAGE
+          end
+          rules = YAML.load_file options.filter
+          rules.each {|rule| filter << rule}
+        end
+        filter
+      end
+
+      def artifact_meets_criteria(artifact, dates, filter)
+        (dates.has_key?(:created_before) ? artifact.created < dates[:created_before] : true) and
+        (dates.has_key?(:modified_before) ? artifact.last_modified < dates[:modified_before] : true) and
+        (dates.has_key?(:last_used_before) ? artifact.latest_date < dates[:last_used_before] : true) and
+        (filter.action_for(artifact) == :include)
       end
 
       def repo_cols(repo, include_cols)

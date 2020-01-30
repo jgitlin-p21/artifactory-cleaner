@@ -66,6 +66,8 @@
     
     <li ><a href="#method-i-generate_artifact">#generate_artifact</a>
     
+    <li ><a href="#method-i-generate_rule">#generate_rule</a>
+    
   </ul>
 </div>
 
@@ -117,13 +119,52 @@
 
           
           <div class="method-source-code" id="generate_artifact-source">
-            <pre><span class="ruby-comment"># File spec/spec_helper.rb, line 5</span>
+            <pre><span class="ruby-comment"># File spec/spec_helper.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generate_artifact</span>
   <span class="ruby-identifier">artifact</span> = <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Cleaner</span><span class="ruby-operator">::</span><span class="ruby-constant">DiscoveredArtifact</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">uri</span> = <span class="ruby-string">&#39;http://yum.example.com/artifacts/test.rpm&#39;</span>
   <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">size</span> = (<span class="ruby-identifier">rand</span> <span class="ruby-operator">*</span> <span class="ruby-value">1024</span> <span class="ruby-operator">*</span> <span class="ruby-value">1024</span> <span class="ruby-operator">*</span> <span class="ruby-value">1024</span>).<span class="ruby-identifier">floor</span>
   <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">last_downloaded</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">rand</span> <span class="ruby-operator">*</span> <span class="ruby-value">3600</span><span class="ruby-operator">*</span><span class="ruby-value">24</span><span class="ruby-operator">*</span><span class="ruby-value">365</span>
   <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">last_modified</span> = <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">last_downloaded</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">rand</span> <span class="ruby-operator">*</span> <span class="ruby-value">3600</span><span class="ruby-operator">*</span><span class="ruby-value">24</span><span class="ruby-operator">*</span><span class="ruby-value">30</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">artifact</span>
+  <span class="ruby-identifier">artifact</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-generate_rule" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">generate_rule</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="generate_rule-source">
+            <pre><span class="ruby-comment"># File spec/spec_helper.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generate_rule</span>
+  <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Cleaner</span><span class="ruby-operator">::</span><span class="ruby-constant">ArtifactFilterRule</span>.<span class="ruby-identifier">new</span>(
+      <span class="ruby-value">action:</span> <span class="ruby-value">:include</span>,
+      <span class="ruby-value">priority:</span> (<span class="ruby-identifier">rand</span> <span class="ruby-operator">*</span> <span class="ruby-value">200</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-value">100</span>,
+      <span class="ruby-value">property:</span> <span class="ruby-value">:url</span>,
+      <span class="ruby-value">regex:</span> <span class="ruby-regexp">/.*/</span>
+  )
 <span class="ruby-keyword">end</span></pre>
           </div>
           

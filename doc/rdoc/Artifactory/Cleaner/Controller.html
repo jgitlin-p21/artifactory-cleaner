@@ -73,6 +73,8 @@
     
     <li ><a href="#method-c-new">::new</a>
     
+    <li ><a href="#method-i-archive_artifact">#archive_artifact</a>
+    
     <li ><a href="#method-i-artifact_usage_search">#artifact_usage_search</a>
     
     <li ><a href="#method-i-bucketize_artifacts">#bucketize_artifacts</a>
@@ -80,6 +82,8 @@
     <li ><a href="#method-i-bucketized_artifact_report">#bucketized_artifact_report</a>
     
     <li ><a href="#method-i-catagorize_old_assets">#catagorize_old_assets</a>
+    
+    <li ><a href="#method-i-delete_artifact">#delete_artifact</a>
     
     <li ><a href="#method-i-discover_artifacts_from_search">#discover_artifacts_from_search</a>
     
@@ -214,6 +218,43 @@ call to Artifactory::Client.new</p>
        <header>
          <h3>Public Instance Methods</h3>
        </header>
+
+    
+      <div id="method-i-archive_artifact" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">archive_artifact</span><span
+            class="method-args">(artifact, path)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="archive_artifact-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 315</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">archive_artifact</span>(<span class="ruby-identifier">artifact</span>, <span class="ruby-identifier">path</span>)
+  <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;[DEBUG] downloading #{artifact} (#{artifact.uri}) to #{path}&quot;</span>
+  <span class="ruby-identifier">timing</span> = <span class="ruby-constant">Benchmark</span>.<span class="ruby-identifier">measure</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">download</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;[DEBUG] #{artifact.uri} #{Util.filesize artifact.size} downloaded in #{timing.real.round(2)} seconds (#{Util.filesize(artifact.size/timing.real)})/s&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
 
     
       <div id="method-i-artifact_usage_search" class="method-detail ">
@@ -474,7 +515,7 @@ href="ArtifactBucketCollection.html">Artifactory::Cleaner::ArtifactBucketCollect
 
           
           <div class="method-source-code" id="catagorize_old_assets-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 317</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 330</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">catagorize_old_assets</span>(<span class="ruby-identifier">days</span>)
   <span class="ruby-identifier">buckets</span> = {
       <span class="ruby-value">730</span> <span class="ruby-operator">=&gt;</span> {<span class="ruby-value">count:</span> <span class="ruby-value">0</span>, <span class="ruby-value">size:</span> <span class="ruby-value">0</span>},
@@ -525,6 +566,40 @@ href="ArtifactBucketCollection.html">Artifactory::Cleaner::ArtifactBucketCollect
   <span class="ruby-keyword">end</span>
   
   <span class="ruby-identifier">buckets</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-delete_artifact" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_artifact</span><span
+            class="method-args">(artifact)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete_artifact-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 323</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_artifact</span>(<span class="ruby-identifier">artifact</span>)
+  <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;[DEBUG] DELETE Artifact #{artifact} at #{artifact.uri}!&quot;</span>
+    <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">delete</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

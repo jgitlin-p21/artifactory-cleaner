@@ -86,6 +86,19 @@ RSpec.describe Artifactory::Cleaner do
       end
     end
 
+    # TODO: This test intermittently fails. There may be an issue with it!
+    #   1) Artifactory::Cleaner Artifactory::Cleaner::ArtifactBucketCollection handles various bucket sizes
+    #      Failure/Error: expect(collection[bucket_size].max).to eq bucket_max
+    #
+    #        expected: 0
+    #             got: 129
+    #
+    #        (compared using ==)
+    #      # ./spec/artifactory/cleaner_spec.rb:97:in `block (5 levels) in <top (required)>'
+    #      # ./spec/artifactory/cleaner_spec.rb:94:in `each'
+    #      # ./spec/artifactory/cleaner_spec.rb:94:in `block (4 levels) in <top (required)>'
+    #      # ./spec/artifactory/cleaner_spec.rb:90:in `times'
+    #      # ./spec/artifactory/cleaner_spec.rb:90:in `block (3 levels) in <top (required)>'
     it "handles various bucket sizes" do
       5.times do
         buckets = 10.times.map {|i| (rand*99).floor + i*100}
@@ -127,6 +140,87 @@ RSpec.describe Artifactory::Cleaner do
             expect(bucket_collection[age].length).to eq bucket_size+1
           end
         end
+      end
+    end
+  end
+
+  describe Artifactory::Cleaner::ArtifactFilterRule do
+    #subject { Artifactory::Cleaner::ArtifactFilterRule.new() }
+    it "allows setting the regex" do
+      subject.regex = %r{.*/opencdisc/.*/4\.[.0-9]+/.*}
+      subject.regexp = %r{.*/opencdisc/.*/3\.[456789]\.[.0-9]+/.*}
+    end
+  end
+
+  describe Artifactory::Cleaner::ArtifactFilter do
+    #subject { Artifactory::Cleaner::ArtifactFilterRule.new() }
+
+    it { should respond_to :each }
+    it { should respond_to :slice }
+    it { should respond_to :clear }
+    it { should respond_to :first }
+    it { should respond_to :last }
+
+    it "knows when it is empty" do
+      expect(subject.length).to eq 0
+      expect(subject.empty?).to eq true
+    end
+
+    describe "using a filter" do
+      before(:all) do
+        @filter = Artifactory::Cleaner::ArtifactFilter.new
+      end
+
+      it "rules can be added" do
+        @filter << generate_rule
+        @filter.push(generate_rule)
+        expect(@filter.length == 2)
+      end
+
+      it "non-rules are rejected" do
+        expect { @filter << "test" }.to raise_error(TypeError)
+        expect { @filter << 1 }.to raise_error(TypeError)
+        expect { @filter << nil }.to raise_error(TypeError)
+        expect { @filter << {} }.to raise_error(TypeError)
+        expect { @filter << [] }.to raise_error(TypeError)
+      end
+
+      it "is enumerable" do
+        @filter.each do |rule|
+          expect rule.is_a? Artifactory::Cleaner::ArtifactFilterRule
+        end
+      end
+
+      it "sorts automatically" do
+        50.times do
+          @filter << generate_rule
+        end
+        last_priority = nil
+        @filter.each do |rule|
+          expect(rule.priority).to be >= last_priority unless last_priority.nil?
+          last_priority = rule.priority
+        end
+      end
+
+      it "accepts in priority order" do
+        filter = Artifactory::Cleaner::ArtifactFilter.new
+        filter << Artifactory::Cleaner::ArtifactFilterRule.new(action: :exclude, priority: 1, regex: /.*/)
+        filter << Artifactory::Cleaner::ArtifactFilterRule.new(action: :include, priority: 0, regex: /.*/)
+        expect(filter.action_for(generate_artifact)).to eq :include
+      end
+
+      it "rejects in priority order" do
+        filter = Artifactory::Cleaner::ArtifactFilter.new
+        filter << Artifactory::Cleaner::ArtifactFilterRule.new(action: :include, priority: 2, regex: /.*/)
+        filter << Artifactory::Cleaner::ArtifactFilterRule.new(action: :exclude, priority: 1, regex: /.*/)
+        expect(filter.action_for(generate_artifact)).to eq :exclude
+      end
+
+      it "accepts as a default" do
+        filter = Artifactory::Cleaner::ArtifactFilter.new
+        filter << Artifactory::Cleaner::ArtifactFilterRule.new(action: :exclude, priority: 1, regex: /do not match/)
+        filter << Artifactory::Cleaner::ArtifactFilterRule.new(action: :include, priority: 0, regex: /do not match/)
+        expect(filter.action_for(generate_artifact)).to eq :include
       end
     end
   end

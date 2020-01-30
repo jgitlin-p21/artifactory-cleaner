@@ -2,12 +2,22 @@ require "bundler/setup"
 require "artifactory/cleaner"
 
 module Artifactory::Cleaner::SpecHelpers
+  def generate_rule
+    Artifactory::Cleaner::ArtifactFilterRule.new(
+        action: :include,
+        priority: (rand * 200).to_i - 100,
+        property: :url,
+        regex: /.*/
+    )
+  end
+
   def generate_artifact
     artifact = Artifactory::Cleaner::DiscoveredArtifact.new
+    artifact.uri = 'http://yum.example.com/artifacts/test.rpm'
     artifact.size = (rand * 1024 * 1024 * 1024).floor
     artifact.last_downloaded = Time.now - rand * 3600*24*365
     artifact.last_modified = artifact.last_downloaded - rand * 3600*24*30
-    return artifact
+    artifact
   end
 end
 

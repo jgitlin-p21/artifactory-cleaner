@@ -77,6 +77,10 @@
     
     <li ><a href="#method-c-repo_table_cols">::repo_table_cols</a>
     
+    <li ><a href="#method-i-archive">#archive</a>
+    
+    <li ><a href="#method-i-clean">#clean</a>
+    
     <li ><a href="#method-i-list_repos">#list_repos</a>
     
     <li ><a href="#method-i-usage_report">#usage_report</a>
@@ -287,6 +291,159 @@ href="https://github.com/erikhuda/thor">github.com/erikhuda/thor</a></p>
        <header>
          <h3>Public Instance Methods</h3>
        </header>
+
+    
+      <div id="method-i-archive" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">archive</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="archive-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">archive</span>
+  <span class="ruby-identifier">dates</span> = <span class="ruby-identifier">parse_date_options</span>
+  <span class="ruby-identifier">filter</span> = <span class="ruby-identifier">load_artifact_filter</span>
+  <span class="ruby-identifier">archive_to</span> = <span class="ruby-identifier">parse_archive_option</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">archive_to</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Missing required `--archive-to` option specifying a a valid, existing directory under which to store archived artifacts&quot;</span>
+    <span class="ruby-identifier">exit</span> <span class="ruby-constant">Sysexits</span><span class="ruby-operator">::</span><span class="ruby-constant">EX_USAGE</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">report</span> = {
+      <span class="ruby-value">archived:</span> {
+          <span class="ruby-value">artifact_count:</span> <span class="ruby-value">0</span>,
+          <span class="ruby-value">bytes:</span> <span class="ruby-value">0</span>
+      },
+      <span class="ruby-value">skipped:</span> {
+          <span class="ruby-value">artifact_count:</span> <span class="ruby-value">0</span>,
+          <span class="ruby-value">bytes:</span> <span class="ruby-value">0</span>
+      }
+  }
+
+  <span class="ruby-ivar">@controller</span>.<span class="ruby-identifier">with_discovered_artifacts</span>(<span class="ruby-value">from:</span> <span class="ruby-identifier">dates</span>[<span class="ruby-value">:from</span>], <span class="ruby-value">to:</span> <span class="ruby-identifier">dates</span>[<span class="ruby-value">:to</span>], <span class="ruby-value">repos:</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">repos</span>, <span class="ruby-value">threads:</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">threads</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">artifact</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">artifact_meets_criteria</span>(<span class="ruby-identifier">artifact</span>, <span class="ruby-identifier">dates</span>, <span class="ruby-identifier">filter</span>)
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dry_run?</span>
+        <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Would archive #{artifact} to #{archive_to}&quot;</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-ivar">@controller</span>.<span class="ruby-identifier">archive_artifact</span> <span class="ruby-identifier">artifact</span>, <span class="ruby-identifier">archive_to</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:archived</span>][<span class="ruby-value">:artifact_count</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:archived</span>][<span class="ruby-value">:bytes</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;[DEBUG] Skipped #{artifact.inspect} because it did not meet the criteria&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">verbose?</span>
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:skipped</span>][<span class="ruby-value">:artifact_count</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:skipped</span>][<span class="ruby-value">:bytes</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">report</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{key} #{values[:artifact_count]} artifacts totaling #{Util.filesize values[:bytes]}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-clean" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clean</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="clean-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 211</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clean</span>
+  <span class="ruby-identifier">dates</span> = <span class="ruby-identifier">parse_date_options</span>
+  <span class="ruby-identifier">filter</span> = <span class="ruby-identifier">load_artifact_filter</span>
+  <span class="ruby-identifier">archive_to</span> = <span class="ruby-identifier">parse_archive_option</span>
+
+  <span class="ruby-comment"># Ready to locate and delete artifacts</span>
+  <span class="ruby-identifier">report</span> = {
+      <span class="ruby-value">deleted:</span> {
+          <span class="ruby-value">artifact_count:</span> <span class="ruby-value">0</span>,
+          <span class="ruby-value">bytes:</span> <span class="ruby-value">0</span>
+      },
+      <span class="ruby-value">archived:</span> {
+          <span class="ruby-value">artifact_count:</span> <span class="ruby-value">0</span>,
+          <span class="ruby-value">bytes:</span> <span class="ruby-value">0</span>
+      },
+      <span class="ruby-value">skipped:</span> {
+          <span class="ruby-value">artifact_count:</span> <span class="ruby-value">0</span>,
+          <span class="ruby-value">bytes:</span> <span class="ruby-value">0</span>
+      }
+  }
+
+  <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;[DEBUG] controller.bucketize_artifacts from #{dates[:from]} to #{dates[:to]} repos #{options.repos}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">verbose?</span>
+  <span class="ruby-ivar">@controller</span>.<span class="ruby-identifier">with_discovered_artifacts</span>(<span class="ruby-value">from:</span> <span class="ruby-identifier">dates</span>[<span class="ruby-value">:from</span>], <span class="ruby-value">to:</span> <span class="ruby-identifier">dates</span>[<span class="ruby-value">:to</span>], <span class="ruby-value">repos:</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">repos</span>, <span class="ruby-value">threads:</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">threads</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">artifact</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">artifact_meets_criteria</span>(<span class="ruby-identifier">artifact</span>, <span class="ruby-identifier">dates</span>, <span class="ruby-identifier">filter</span>)
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">archive_to</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dry_run?</span>
+          <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Would archive #{artifact} to #{archive_to}&quot;</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-ivar">@controller</span>.<span class="ruby-identifier">archive_artifact</span> <span class="ruby-identifier">artifact</span>, <span class="ruby-identifier">archive_to</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">report</span>[<span class="ruby-value">:archived</span>][<span class="ruby-value">:artifact_count</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">report</span>[<span class="ruby-value">:archived</span>][<span class="ruby-value">:bytes</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">size</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dry_run?</span>
+        <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Would delete #{artifact}&quot;</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-ivar">@controller</span>.<span class="ruby-identifier">delete_artifact</span> <span class="ruby-identifier">artifact</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:deleted</span>][<span class="ruby-value">:artifact_count</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:deleted</span>][<span class="ruby-value">:bytes</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;[DEBUG] Skipped #{artifact.inspect} because it did not meet the criteria&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">verbose?</span>
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:skipped</span>][<span class="ruby-value">:artifact_count</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:skipped</span>][<span class="ruby-value">:bytes</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">report</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{key} #{values[:artifact_count]} artifacts totaling #{Util.filesize values[:bytes]}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
 
     
       <div id="method-i-list_repos" class="method-detail ">

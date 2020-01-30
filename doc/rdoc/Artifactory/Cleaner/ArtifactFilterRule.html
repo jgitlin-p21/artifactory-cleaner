@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Artifactory::Cleaner::ArtifactFilterRule - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/jquery.js"></script>
+<script src="../../js/darkfish.js"></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="../../Object.html">Object</a>
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">Comparable</span>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-3C-3D-3E">#&lt;=&gt;</a>
+    
+    <li ><a href="#method-i-action_for">#action_for</a>
+    
+    <li ><a href="#method-i-excludes-3F">#excludes?</a>
+    
+    <li ><a href="#method-i-includes-3F">#includes?</a>
+    
+    <li ><a href="#method-i-matches-3F">#matches?</a>
+    
+    <li ><a href="#method-i-regex-3D">#regex=</a>
+    
+    <li ><a href="#method-i-regexp-3D">#regexp=</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Artifactory::Cleaner::ArtifactFilterRule">
+  <h1 id="class-Artifactory::Cleaner::ArtifactFilterRule" class="class">
+    class Artifactory::Cleaner::ArtifactFilterRule
+  </h1>
+
+  <section class="description">
+    
+<p>Filter a collection of artifacts based on include/deny rules</p>
+
+<p>The Artifactory::Cleaner::ArtifactFilterRile class represents a whitelist
+or blacklist entry. It matches a package and then targets that package for
+inclusion or exclusion.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-action" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">action</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-priority" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">priority</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>TODO: Allow changing priority. Right now this would cause problems because
+if the rule is in a filtr, the filter won&#39;t be sorted properly after
+this change.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-property" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">property</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-regex" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">regex</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-regexp" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">regexp</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(action: :include, priority: 0, property: :uri, regex: //)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_filter_rule.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">action:</span> <span class="ruby-value">:include</span>, <span class="ruby-value">priority:</span> <span class="ruby-value">0</span>, <span class="ruby-value">property:</span> <span class="ruby-value">:uri</span>, <span class="ruby-value">regex:</span> <span class="ruby-regexp">//</span>)
+  <span class="ruby-ivar">@regex</span> = <span class="ruby-identifier">regex</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">regex</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Regexp</span>
+  <span class="ruby-ivar">@action</span> = <span class="ruby-identifier">action</span>
+  <span class="ruby-ivar">@priority</span> = <span class="ruby-identifier">priority</span>.<span class="ruby-identifier">to_i</span>
+  <span class="ruby-ivar">@property</span> = <span class="ruby-identifier">property</span>.<span class="ruby-identifier">to_sym</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-3C-3D-3E" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">&lt;=&gt;</span><span
+            class="method-args">(other_rule)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Compare priority with another rule</p>
+          
+          
+
+          
+          <div class="method-source-code" id="3C-3D-3E-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_filter_rule.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;=&gt;</span>(<span class="ruby-identifier">other_rule</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">other_rule</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">ArtifactFilterRule</span>
+    <span class="ruby-ivar">@priority</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">other_rule</span>.<span class="ruby-identifier">priority</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-action_for" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">action_for</span><span
+            class="method-args">(artifact)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Does this rule trigger an action on a given artifact?</p>
+
+<p>This method returns true if the given artifact matches the criteria of this
+rule, and the rule is of type :include</p>
+          
+          
+
+          
+          <div class="method-source-code" id="action_for-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_filter_rule.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">action_for</span>(<span class="ruby-identifier">artifact</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">artifact</span>)
+    <span class="ruby-ivar">@action</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-excludes-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">excludes?</span><span
+            class="method-args">(artifact)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Does this rule determine that an artifact should be excluded?</p>
+
+<p>This method returns true if the given artifact matches the criteria of this
+rule, and the rule is of type :exclude</p>
+          
+          
+
+          
+          <div class="method-source-code" id="excludes-3F-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_filter_rule.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">excludes?</span>(<span class="ruby-identifier">artifact</span>)
+  <span class="ruby-ivar">@type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:exclude</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">artifact</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-includes-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">includes?</span><span
+            class="method-args">(artifact)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Does this rule determine that an artifact should be included?</p>
+
+<p>This method returns true if the given artifact matches the criteria of this
+rule, and the rule is of type :include</p>
+          
+          
+
+          
+          <div class="method-source-code" id="includes-3F-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_filter_rule.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">includes?</span>(<span class="ruby-identifier">artifact</span>)
+  <span class="ruby-ivar">@type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:include</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">matches?</span>(<span class="ruby-identifier">artifact</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-matches-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">matches?</span><span
+            class="method-args">(artifact)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Does this rule match a given package?</p>
+
+<p>Returns true if the `property` of a given artifact matches the `regex`</p>
+          
+          
+
+          
+          <div class="method-source-code" id="matches-3F-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_filter_rule.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">matches?</span>(<span class="ruby-identifier">artifact</span>)
+  <span class="ruby-ivar">@regex</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Regexp</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@regex</span>.<span class="ruby-identifier">match?</span>(<span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">send</span>(<span class="ruby-ivar">@property</span>).<span class="ruby-identifier">to_s</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-regex-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">regex=</span><span
+            class="method-args">(re)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Change the regex of this rule</p>
+          
+          
+
+          
+          <div class="method-source-code" id="regex-3D-source">
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_filter_rule.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">regex=</span>(<span class="ruby-identifier">re</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-string">&#39;Expected a Regexp&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">re</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Regexp</span>
+  <span class="ruby-ivar">@regex</span> = <span class="ruby-identifier">re</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="ArtifactFilterRule.html#method-i-regexp-3D">regexp=</a>
+        </div>
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-regexp-3D" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">regexp=</span><span
+            class="method-args">(re)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="ArtifactFilterRule.html#method-i-regex-3D">regex=</a>
+        </div>
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

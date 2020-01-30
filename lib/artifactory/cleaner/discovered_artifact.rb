@@ -1,3 +1,4 @@
+require 'uri'
 require 'artifactory'
 
 module Artifactory
@@ -17,13 +18,22 @@ module Artifactory
       ##
       # What's the earliest Time of any of the date/time properties on this object?
       def earliest_date
-        self.earliest_date_from(self)
+        self.class.earliest_date_from(self)
       end
 
       ##
       # What's the most recent Time of any of the date/time properties on this object?
       def latest_date
-        self.latest_date_from(self)
+        self.class.latest_date_from(self)
+      end
+
+      def filename
+        uri = URI(self.uri)
+        File.basename(uri.path)
+      end
+
+      def to_s
+        "#<DiscoveredArtifact #{filename} last accessed #{latest_date}>"
       end
 
       ##
