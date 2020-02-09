@@ -13,7 +13,8 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Performs maintainence tasks on Artifactory repositories}
   spec.description   = %q{Will provide maintainence tasks for Artifactory, like cleaning up old artifacts}
   spec.homepage      = "https://bitbucket.org/pinnacle21/artifactory-cleaner/src/master/"
-  spec.license       = 'Nonstandard'
+  spec.license       = 'MIT'
+  spec.licenses      = ['MIT']
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   #spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
