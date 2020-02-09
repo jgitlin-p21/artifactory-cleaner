@@ -59,6 +59,7 @@
     <li><a href="#label-Artifactory-3A-3ACleaner">Artifactory::Cleaner</a>
     <li><a href="#label-Installation">Installation</a>
     <li><a href="#label-To+use+as+a+CLI+command-3A">To use as a CLI command:</a>
+    <li><a href="#label-Authentication+and+Configuration">Authentication and Configuration</a>
     <li><a href="#label-To+use+as+a+gem-3A">To use as a gem:</a>
     <li><a href="#label-Usage">Usage</a>
     <li><a href="#label-Development">Development</a>
@@ -90,7 +91,17 @@
   
     <li><a href="./filterlist_yaml.html">filterlist.yaml</a>
   
+    <li><a href="./filters/clean-amzn_yaml.html">clean-amzn.yaml</a>
+  
+    <li><a href="./filters/snapshots_yaml.html">snapshots.yaml</a>
+  
+    <li><a href="./filters/test-filter_yaml.html">test-filter.yaml</a>
+  
+    <li><a href="./filters/yum-test_yaml.html">yum-test.yaml</a>
+  
     <li><a href="./results/archive-test-4_log.html">archive-test-4.log</a>
+  
+    <li><a href="./results/buckets-2020-01-31_txt.html">buckets-2020-01-31</a>
   
     <li><a href="./results/clean-test-2_log.html">clean-test-2.log</a>
   
@@ -108,7 +119,9 @@
   
     <li><a href="./results/clean-test1_log.html">clean-test1.log</a>
   
-    <li><a href="./test-filter_yaml.html">test-filter.yaml</a>
+    <li><a href="./results/yum-test_2020-01-31_log.html">yum-test.2020-01-31.log</a>
+  
+    <li><a href="./results/yum-test_dry-run_log.html">yum-test_dry-run.log</a>
   
   </ul>
 </div>
@@ -139,6 +152,50 @@ gem build artifactory-cleaner.gemspec
 sudo gem install artifactory-cleaner-*.gem</pre>
 
 <p>to install the <code>artifactory-cleaner</code> command.</p>
+
+<p>Full usage information is available using <code>artifactory-cleaner
+help</code></p>
+
+<p>The <code>artifactory-cleaner</code> CLI interface follows the same format
+as git: <code>artifactory-cleaner command [options]</code></p>
+
+<p>Commands available are:</p>
+<ul><li>
+<p><code>artifactory-cleaner archive</code> Given a specific set of critera
+(and optionally a set of filters) download all artifacts  from specified
+repos to the local filesystem. <em>Note:</em> this will cause the
+<code>last_downloaded</code> date of all the artifacts  which are archived
+to be updated to the time the command is run, so they may no longer match
+your search criteria on  a subsequent run</p>
+</li><li>
+<p><code>artifactory-cleaner clean</code> delete old artifacts which meet a
+specific set of critera (and optionally a set of filters)  from a given set
+of repos, with the ability to archive them to the local filesystem. This is
+Artifactory::Cleaner&#39;s  primry function: to reduce disk space usage by
+deleting old, unnecessary artifacts.</p>
+</li><li>
+<p><code>artifactory-cleaner list-repos</code> provides information about
+available repositories in <a href="Artifactory.html">Artifactory</a>. Can
+be used in  pipelines with the <code>-H</code> flag, or can be used to
+query arepository information in human-readable columns.</p>
+</li><li>
+<p><code>artifactory-cleaner usage-report</code> analyze artifacts and produce
+a report detailing usage breakdown by date ranges,  optionally producting a
+detailed YAML report of all artifacts meeting search criteria</p>
+</li></ul>
+
+<h4 id="label-Authentication+and+Configuration">Authentication and Configuration<span><a href="#label-Authentication+and+Configuration">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>In order for <code>artifactory-cleaner</code> to know which <a
+href="Artifactory.html">Artifactory</a> server to communicate with and how
+to authenticate, either command-line arguments may be used, or (preferably)
+a configuration filr may be specified using the <code>-c /
+--conf-file</code> switch.</p>
+
+<p>If using command line arguments, <code>--endpoint</code> can be used to
+specify the HTTPS URL of the <a href="Artifactory.html">Artifactory</a>
+API, and <code>--api-key</code> can be used to specify the API key. <em>Be
+aware</em></p>
 
 <h3 id="label-To+use+as+a+gem-3A">To use as a gem:<span><a href="#label-To+use+as+a+gem-3A">&para;</a> <a href="#top">&uarr;</a></span></h3>
 

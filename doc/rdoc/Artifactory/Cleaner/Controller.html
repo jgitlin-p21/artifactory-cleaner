@@ -120,7 +120,7 @@ provides logic central to <a href="../../Artifactory.html">Artifactory</a>
 href="Controller.html">Artifactory::Cleaner::Controller</a> manages the <a
 href="../../Artifactory.html">Artifactory</a> API client, performs
 searches, discovers artifacts, and more. It is capable of executing tasks
-in a multi-threaded fashon, making multiple requests to the <a
+in a multi-threaded fashion, making multiple requests to the <a
 href="../../Artifactory.html">Artifactory</a> server in parallel.</p>
 
   </section>
@@ -233,13 +233,23 @@ call to Artifactory::Client.new</p>
 
         <div class="method-description">
           
-          
+          <p>Download a copy of an artifact to the local filesystem prior to deletion</p>
+
+<p>Given an Artifactory::Resource::Artifact `artifact`, download the artifact
+to the local filesystem directory specified by the `path` param</p>
+
+<p>*<strong>Note:</strong>* Downloading an artifact will update the
+artifact&#39;s last_downloaded date so it may no longer match the same
+search criteria it originally die (if last_downlaoded was used to discover
+this artifact)</p>
+
+<p>This method is meant to be used prior to calling `delete_artifact`</p>
           
           
 
           
           <div class="method-source-code" id="archive_artifact-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 315</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 346</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">archive_artifact</span>(<span class="ruby-identifier">artifact</span>, <span class="ruby-identifier">path</span>)
   <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;[DEBUG] downloading #{artifact} (#{artifact.uri}) to #{path}&quot;</span>
   <span class="ruby-identifier">timing</span> = <span class="ruby-constant">Benchmark</span>.<span class="ruby-identifier">measure</span> <span class="ruby-keyword">do</span>
@@ -433,7 +443,7 @@ call to Artifactory::Client.new</p>
 
           
           <div class="method-source-code" id="bucketize_artifacts-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 268</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 289</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">bucketize_artifacts</span>(<span class="ruby-value">from:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">to:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">increment:</span> <span class="ruby-value">30</span> <span class="ruby-operator">*</span> <span class="ruby-value">24</span> <span class="ruby-operator">*</span> <span class="ruby-value">3600</span>, <span class="ruby-value">repos:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">buckets:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">threads:</span> <span class="ruby-value">4</span>)
   <span class="ruby-identifier">buckets</span> = <span class="ruby-constant">ArtifactBucketCollection</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">buckets</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">ArtifactBucketCollection</span>
   <span class="ruby-identifier">with_discovered_artifacts</span>(<span class="ruby-value">from:</span> <span class="ruby-identifier">from</span>, <span class="ruby-value">to:</span> <span class="ruby-identifier">to</span>, <span class="ruby-value">repos:</span> <span class="ruby-identifier">repos</span>, <span class="ruby-value">increment:</span> <span class="ruby-identifier">increment</span>, <span class="ruby-value">threads:</span> <span class="ruby-identifier">threads</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">artifact</span><span class="ruby-operator">|</span>
@@ -475,7 +485,7 @@ href="ArtifactBucketCollection.html">Artifactory::Cleaner::ArtifactBucketCollect
 
           
           <div class="method-source-code" id="bucketized_artifact_report-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 280</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 301</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">bucketized_artifact_report</span>(<span class="ruby-identifier">buckets</span>)
   <span class="ruby-identifier">total_size</span> = <span class="ruby-value">0</span>
   <span class="ruby-identifier">total_count</span> = <span class="ruby-value">0</span>
@@ -515,7 +525,7 @@ href="ArtifactBucketCollection.html">Artifactory::Cleaner::ArtifactBucketCollect
 
           
           <div class="method-source-code" id="catagorize_old_assets-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 330</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 370</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">catagorize_old_assets</span>(<span class="ruby-identifier">days</span>)
   <span class="ruby-identifier">buckets</span> = {
       <span class="ruby-value">730</span> <span class="ruby-operator">=&gt;</span> {<span class="ruby-value">count:</span> <span class="ruby-value">0</span>, <span class="ruby-value">size:</span> <span class="ruby-value">0</span>},
@@ -590,16 +600,27 @@ href="ArtifactBucketCollection.html">Artifactory::Cleaner::ArtifactBucketCollect
 
         <div class="method-description">
           
-          
+          <p>Delete an artifact from the <a
+href="../../Artifactory.html">Artifactory</a> server</p>
+
+<p>Given an Artifactory::Resource::Artifact `artifact`, delete it from the <a
+href="../../Artifactory.html">Artifactory</a> server. **This is a
+destructive operation – use with caution!**</p>
+
+<p>Consider using `archive_artifact` first to save artifacts locally</p>
+
+<p>This function writes to the remote <a
+href="../../Artifactory.html">Artifactory</a> server (specifically it makes
+a delete call)</p>
           
           
 
           
           <div class="method-source-code" id="delete_artifact-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 323</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 363</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_artifact</span>(<span class="ruby-identifier">artifact</span>)
   <span class="ruby-identifier">debuglog</span> <span class="ruby-node">&quot;[DEBUG] DELETE Artifact #{artifact} at #{artifact.uri}!&quot;</span>
-    <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">delete</span>
+  <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">delete</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -725,7 +746,7 @@ a Hash with three keys, one for each repo type: `:local`, `:remote` and
 `:virtual` Under each of these keys is a hash mapping repo keys to their
 Artifactory::Resource::Repository objects</p>
 
-<p>This method may throw network errors from the underlying <a
+<p>This method may raise network errors from the underlying <a
 href="../../Artifactory.html">Artifactory</a> client</p>
 
 <p>This method is not multi-threaded</p>
@@ -854,13 +875,54 @@ status information to STDERR</p>
 
         <div class="method-description">
           
-          
+          <p>Iterator method for an artifact search</p>
+
+<p>the `with_discovered_artifacts` method is used to iterate over artifacts
+from a search which potentially covers a large period of time. This method
+will break the period up into small chunks of time defined by the
+`increment` argument (defaulting to 30 days) and will perform multiple
+searches to avoid large searches which may time out or overload the <a
+href="../../Artifactory.html">Artifactory</a> server.</p>
+
+<p>Pass a block and the block will be called with every <a
+href="DiscoveredArtifact.html">Artifactory::Cleaner::DiscoveredArtifact</a>
+that is found</p>
+
+<p>This method is not mult-threaded however it calls <a
+href="Controller.html#method-i-artifact_usage_search">#artifact_usage_search</a>
+which is multi-threaded; number of threads is controlled by the `threads`
+argument</p>
+
+<p>This method calls <a
+href="Controller.html#method-i-artifact_usage_search">#artifact_usage_search</a>
+which may raise network exceptions</p>
+
+<p>Params:</p>
+<dl class="rdoc-list note-list"><dt><code>from</code>
+<dd>
+<p>Time instance for the start date of the search</p>
+</dd><dt><code>to</code>
+<dd>
+<p>Time instance for the end date of the search; defaults to Time.now</p>
+</dd><dt><code>repos</code>
+<dd>
+<p>Optional array of repository names to search within; searches all
+repositories if omitted</p>
+</dd><dt><code>increment</code>
+<dd>
+<p>Integer number of seconds to chunk the search period into, defaults to 30
+days</p>
+</dd><dt><code>threads</code>
+<dd>
+<p>Number of threads to use to fetch artifacts; defayult is 4 (passed to <a
+href="Controller.html#method-i-artifact_usage_search">#artifact_usage_search</a>)</p>
+</dd></dl>
           
           
 
           
           <div class="method-source-code" id="with_discovered_artifacts-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 256</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 277</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">with_discovered_artifacts</span>(<span class="ruby-value">from:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">to:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">repos:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">increment:</span> <span class="ruby-value">30</span> <span class="ruby-operator">*</span> <span class="ruby-value">24</span> <span class="ruby-operator">*</span> <span class="ruby-value">3600</span>, <span class="ruby-value">threads:</span> <span class="ruby-value">4</span>)
   <span class="ruby-identifier">chunk_end</span> = <span class="ruby-identifier">to</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">chunk_end</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">from</span>
@@ -911,7 +973,7 @@ IOStream</p>
 
           
           <div class="method-source-code" id="yaml_format-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 298</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/controller.rb, line 319</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">yaml_format</span>(<span class="ruby-identifier">artifact</span>, <span class="ruby-identifier">indent</span> = <span class="ruby-value">0</span>)
   <span class="ruby-identifier">properties</span> = [<span class="ruby-value">:uri</span>, <span class="ruby-value">:last_downloaded</span>, <span class="ruby-value">:repo</span>, <span class="ruby-value">:created</span>, <span class="ruby-value">:last_modified</span>, <span class="ruby-value">:last_updated</span>, <span class="ruby-value">:download_uri</span>, <span class="ruby-value">:mime_type</span>, <span class="ruby-value">:size</span>, <span class="ruby-value">:checksums</span> ]
   <span class="ruby-identifier">result</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">properties</span>.<span class="ruby-identifier">each_with_object</span>({}) {<span class="ruby-operator">|</span><span class="ruby-identifier">prop</span>,<span class="ruby-identifier">export</span><span class="ruby-operator">|</span> <span class="ruby-identifier">export</span>[<span class="ruby-identifier">prop</span>] = <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">prop</span>) })

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>clean-test-3.log - RDoc Documentation</title>
+<title>test-filter.yaml - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -115,7 +115,16 @@
   </div>
 </nav>
 
-<main role="main" aria-label="Page results/clean-test-3.log">
+<main role="main" aria-label="Page filters/test-filter.yaml">
+<hr>
+<ul><li>
+<p>!ruby/object:Artifactory::Cleaner::ArtifactFilterRule regex: !ruby/regexp
+/opencdisc-enterprise-cd-app-dev-3.4.5-111.noarch.rpm/ action: :include
+priority: -1 property: :uri</p>
+</li><li>
+<p>!ruby/object:Artifactory::Cleaner::ArtifactFilterRule regex: !ruby/regexp
+/.*/ action: :exclude priority: 9999 property: :uri</p>
+</li></ul>
 </main>
 
 

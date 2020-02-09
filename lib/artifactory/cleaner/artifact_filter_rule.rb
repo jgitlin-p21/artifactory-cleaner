@@ -26,7 +26,7 @@ module Artifactory
       alias_method :regexp, :regex
       alias_method :regexp=, :regex=
 
-      # TODO: Allow changing priority. Right now this would cause problems because if the rule is in a filtr, the filter won't be sorted properly after this change.
+      # TODO: Allow changing priority. Right now this would cause problems because if the rule is in a filer, the filter won't be sorted properly after this change.
       attr_reader :priority
       attr_accessor :property
       attr_accessor :action

@@ -273,13 +273,20 @@ href="ArtifactBucket.html">Artifactory::Cleaner::ArtifactBucket</a></p>
 
         <div class="method-description">
           
-          
+          <p>Add a new artifact to this collection</p>
+
+<p>Given an Artifactory::Resource::Artifact `artifact`, find the proper <a
+href="ArtifactBucket.html">ArtifactBucket</a> within this <a
+href="ArtifactBucketCollection.html">ArtifactBucketCollection</a> and add
+the artifact ton that bucket</p>
+
+<p>Aliased as `&lt;&lt;`</p>
           
           
 
           
           <div class="method-source-code" id="add-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 49</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add</span>(<span class="ruby-identifier">artifact</span>)
   <span class="ruby-identifier">age</span> = (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Cleaner</span><span class="ruby-operator">::</span><span class="ruby-constant">DiscoveredArtifact</span>.<span class="ruby-identifier">latest_date_from</span>(<span class="ruby-identifier">artifact</span>))<span class="ruby-operator">/</span>(<span class="ruby-value">3600</span><span class="ruby-operator">*</span><span class="ruby-value">24</span>)
 
@@ -317,13 +324,15 @@ href="ArtifactBucket.html">Artifactory::Cleaner::ArtifactBucket</a></p>
 
         <div class="method-description">
           
-          
+          <p>Total number of Artifacts within this collection</p>
+
+<p>Returns the sum of the length of all buckets within this collection</p>
           
           
 
           
           <div class="method-source-code" id="artifact_count-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 45</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">artifact_count</span>
   <span class="ruby-ivar">@buckets</span>.<span class="ruby-identifier">reduce</span>(<span class="ruby-value">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>, <span class="ruby-identifier">bkt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">bkt</span>.<span class="ruby-identifier">length</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -350,13 +359,18 @@ href="ArtifactBucket.html">Artifactory::Cleaner::ArtifactBucket</a></p>
 
         <div class="method-description">
           
-          
+          <p>Accessor for a bucket of a given age</p>
+
+<p>Returns the bucket which covers the period `age` (represented as an
+artifact age, in days)</p>
+
+<p>Aliased as `[]`</p>
           
           
 
           
           <div class="method-source-code" id="bucket-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 61</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">bucket</span>(<span class="ruby-identifier">age</span>)
   <span class="ruby-ivar">@buckets</span>.<span class="ruby-identifier">find</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">covers?</span> <span class="ruby-identifier">age</span>}
 <span class="ruby-keyword">end</span></pre>
@@ -387,13 +401,20 @@ href="ArtifactBucket.html">Artifactory::Cleaner::ArtifactBucket</a></p>
 
         <div class="method-description">
           
-          
+          <p>Return an Array containing the bucket sizes of this collection.</p>
+
+<p>Returns the `max` property from every bucket within this collection, thus
+representing the bucket sizes this collection contains (as a properly
+configured <a
+href="ArtifactBucketCollection.html">ArtifactBucketCollection</a> has the
+min of each bucket set to the max of the previous bucket, thus covering an
+entire time range)</p>
           
           
 
           
           <div class="method-source-code" id="bucket_sizes-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 41</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">bucket_sizes</span>
   <span class="ruby-ivar">@buckets</span>.<span class="ruby-identifier">map</span> <span class="ruby-operator">&amp;</span><span class="ruby-value">:max</span>
 <span class="ruby-keyword">end</span></pre>
@@ -420,13 +441,15 @@ href="ArtifactBucket.html">Artifactory::Cleaner::ArtifactBucket</a></p>
 
         <div class="method-description">
           
-          
+          <p>Remove all Artifacts from this collection</p>
+
+<p>Calls `clear` on every bucket within this collection</p>
           
           
 
           
           <div class="method-source-code" id="clear-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 28</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clear</span>
   <span class="ruby-ivar">@buckets</span>.<span class="ruby-identifier">each</span> <span class="ruby-operator">&amp;</span><span class="ruby-value">:clear</span>
 <span class="ruby-keyword">end</span></pre>
@@ -453,19 +476,32 @@ href="ArtifactBucket.html">Artifactory::Cleaner::ArtifactBucket</a></p>
 
         <div class="method-description">
           
-          
+          <p>Adjust the bucket sizes within this collection</p>
+
+<p>Given an Enumerable of ages (as integer values of days) define buckets
+representing those periods within this collection. This method is similar
+to the constructor: provide an Enumerable where each value represents a
+bucket size and new buckets will be added to this collection representing
+the ages (in days) contained within `bucket_list`</p>
+
+<p>TODO: This will not update older buckets or move artifacts around, so if
+buckets were already defined then this method may result in an invalid
+configuration, E.G. overlapping buckets or artifacts which are no longer in
+the desired buckets. For best results, call this method on an <a
+href="ArtifactBucketCollection.html">ArtifactBucketCollection</a> for which
+you already know the bucket sizes and to which no artifacts have yet been
+added</p>
           
           
 
           
           <div class="method-source-code" id="define_buckets-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">define_buckets</span>(<span class="ruby-identifier">bucket_list</span>)
   <span class="ruby-identifier">last_size</span> = <span class="ruby-value">0</span>
   <span class="ruby-identifier">bucket_list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">size</span><span class="ruby-operator">|</span>
     <span class="ruby-ivar">@buckets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Cleaner</span><span class="ruby-operator">::</span><span class="ruby-constant">ArtifactBucket</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">last_size</span>,<span class="ruby-identifier">size</span>)
     <span class="ruby-identifier">last_size</span> = <span class="ruby-identifier">size</span>
-    <span class="ruby-comment"># TODO: This will not update older buckets or move artifacts around</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -491,13 +527,20 @@ href="ArtifactBucket.html">Artifactory::Cleaner::ArtifactBucket</a></p>
 
         <div class="method-description">
           
-          
+          <p>Human-readable summary of this collection</p>
+
+<p>Returns a string summarizing each bucket within this collection: how many
+packages and what filesize each bucket contains. Used when analyzing
+artifact searches: artifacts discovered from a search are placed into an <a
+href="ArtifactBucketCollection.html">ArtifactBucketCollection</a> and then
+this report can be produced to describe how old the artifacts are and where
+opportunities for cleaning exist.</p>
           
           
 
           
           <div class="method-source-code" id="report-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 66</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket_collection.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">report</span>
   <span class="ruby-identifier">buckets</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">bucket</span><span class="ruby-operator">|</span>
     <span class="ruby-node">&quot;#{bucket.length} packages between #{bucket.min} and #{bucket.max} days, totaling #{Artifactory::Cleaner::Util::filesize bucket.filesize}&quot;</span>

@@ -149,7 +149,7 @@ downloaded timestamps.</p>
 
           
           <div class="method-source-code" id="earliest_date_from-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 45</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">earliest_date_from</span>(<span class="ruby-identifier">artifact</span>)
   [
       <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">created</span>,
@@ -192,7 +192,7 @@ timestamps.</p>
 
           
           <div class="method-source-code" id="latest_date_from-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">latest_date_from</span>(<span class="ruby-identifier">artifact</span>)
   [
       <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">created</span>,
@@ -238,7 +238,7 @@ object?</p>
 
           
           <div class="method-source-code" id="earliest_date-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 20</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">earliest_date</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">earliest_date_from</span>(<span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -265,13 +265,13 @@ object?</p>
 
         <div class="method-description">
           
-          
+          <p>The filename componet (basename) of this artifact&#39;s URL</p>
           
           
 
           
           <div class="method-source-code" id="filename-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 30</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">filename</span>
   <span class="ruby-identifier">uri</span> = <span class="ruby-constant">URI</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">uri</span>)
   <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">path</span>)
@@ -306,7 +306,7 @@ client (presumably to be installed)</p>
 
           
           <div class="method-source-code" id="last_downloaded-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 16</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 15</span>
 <span class="ruby-identifier">attribute</span> <span class="ruby-value">:last_downloaded</span>
 </pre>
           </div>
@@ -339,7 +339,7 @@ object?</p>
 
           
           <div class="method-source-code" id="latest_date-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 26</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">latest_date</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">latest_date_from</span>(<span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -366,13 +366,13 @@ object?</p>
 
         <div class="method-description">
           
-          
+          <p>A string representation of this artifact</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/discovered_artifact.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-node">&quot;#&lt;DiscoveredArtifact #{filename} last accessed #{latest_date}&gt;&quot;</span>
 <span class="ruby-keyword">end</span></pre>

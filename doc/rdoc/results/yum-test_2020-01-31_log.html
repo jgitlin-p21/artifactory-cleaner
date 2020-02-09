@@ -1,0 +1,2854 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>yum-test.2020-01-31.log - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../CODE_OF_CONDUCT_md.html">CODE_OF_CONDUCT</a>
+  
+    <li><a href="../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../README_md.html">README</a>
+  
+    <li><a href="../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../artifactory-cleaner_gemspec.html">artifactory-cleaner.gemspec</a>
+  
+    <li><a href="../artifactory-cleaner_iml.html">artifactory-cleaner.iml</a>
+  
+    <li><a href="../bin/setup.html">setup</a>
+  
+    <li><a href="../filterlist_yaml.html">filterlist.yaml</a>
+  
+    <li><a href="../filters/clean-amzn_yaml.html">clean-amzn.yaml</a>
+  
+    <li><a href="../filters/snapshots_yaml.html">snapshots.yaml</a>
+  
+    <li><a href="../filters/test-filter_yaml.html">test-filter.yaml</a>
+  
+    <li><a href="../filters/yum-test_yaml.html">yum-test.yaml</a>
+  
+    <li><a href="../results/archive-test-4_log.html">archive-test-4.log</a>
+  
+    <li><a href="../results/buckets-2020-01-31_txt.html">buckets-2020-01-31</a>
+  
+    <li><a href="../results/clean-test-2_log.html">clean-test-2.log</a>
+  
+    <li><a href="../results/clean-test-3_log.html">clean-test-3.log</a>
+  
+    <li><a href="../results/clean-test-5_log.html">clean-test-5.log</a>
+  
+    <li><a href="../results/clean-test-6_log.html">clean-test-6.log</a>
+  
+    <li><a href="../results/clean-test-7_log.html">clean-test-7.log</a>
+  
+    <li><a href="../results/clean-test-8-real_log.html">clean-test-8-real.log</a>
+  
+    <li><a href="../results/clean-test-9_log.html">clean-test-9.log</a>
+  
+    <li><a href="../results/clean-test1_log.html">clean-test1.log</a>
+  
+    <li><a href="../results/yum-test_2020-01-31_log.html">yum-test.2020-01-31.log</a>
+  
+    <li><a href="../results/yum-test_dry-run_log.html">yum-test_dry-run.log</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page results/yum-test.2020-01-31.log">
+<dl class="rdoc-list label-list"><dt>DEBUG
+<dd>
+<p>controller.bucketize_artifacts from 2019-01-01 00:00:00 +0000 to 2019-11-01
+00:00:00 +0000 repos [“yum-test”]</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1569974400000, :to=&gt;1572566400000, :repos=&gt;“yum-test”}</p>
+</dd><dt>DEBUG
+<dd>
+<p>Got 51 results from search in 0.245988299997407 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189966365120; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189966364760; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189962577320; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189962574860; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Enqueue URLs for workers to discover:   0.000149   0.000097   0.000246 ( 
+0.000287)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Dequeue found Artifacts from workers:   0.106352   0.042672   0.149024 ( 
+2.447441)</p>
+</dd><dt>DEBUG
+<dd>
+<p>51 artifacts fetched in 2.45 seconds</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.011737   0.005422   0.017159 (  0.245988)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.106577   0.042811   0.149388 (  2.447841)</p>
+</dd><dt>DEBUG
+<dd>
+<p>51 artifacts fetched in 2.69 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.0.4-8565.noarch.rpm last accessed
+2020-01-31 18:18:43 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.4-8565.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.4-8565.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.4-8565.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.4-8565.noarch.rpm</a>
+148.0 MiB downloaded in 8.54 seconds (17.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.0.4-8565.noarch.rpm last accessed
+2020-01-31 18:18:43 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.4-8565.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.4-8565.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.1-8096.noarch.rpm last accessed
+2019-10-03 20:53:06 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8096.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8096.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8096.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8096.noarch.rpm</a>
+151.3 MiB downloaded in 6.32 seconds (23.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.1-8096.noarch.rpm last accessed
+2019-10-03 20:53:06 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8096.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8096.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.0-4666.noarch.rpm last accessed
+2019-10-09 01:02:22 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4666.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4666.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4666.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4666.noarch.rpm</a>
+151.2 MiB downloaded in 7.62 seconds (19.8 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.0-4666.noarch.rpm last accessed
+2019-10-09 01:02:22 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4666.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4666.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.1-8093.noarch.rpm last accessed
+2019-10-03 20:51:15 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8093.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8093.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8093.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8093.noarch.rpm</a>
+151.3 MiB downloaded in 8.27 seconds (18.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.1-8093.noarch.rpm last accessed
+2019-10-03 20:51:15 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8093.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8093.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.1-8107.noarch.rpm last accessed
+2019-10-03 21:21:33 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8107.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8107.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8107.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8107.noarch.rpm</a>
+151.3 MiB downloaded in 6.69 seconds (22.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.1-8107.noarch.rpm last accessed
+2019-10-03 21:21:33 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8107.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.1-8107.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.2-9346.noarch.rpm last accessed
+2019-10-31 15:07:27 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9346.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9346.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9346.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9346.noarch.rpm</a>
+151.3 MiB downloaded in 8.49 seconds (17.8 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.2-9346.noarch.rpm last accessed
+2019-10-31 15:07:27 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9346.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9346.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.2-9304.noarch.rpm last accessed
+2019-10-30 18:27:26 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9304.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9304.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9304.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9304.noarch.rpm</a>
+151.3 MiB downloaded in 114.96 seconds (1.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.2-9304.noarch.rpm last accessed
+2019-10-30 18:27:26 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9304.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.2-9304.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9199.noarch.rpm last accessed
+2019-10-25 20:46:27 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9199.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9199.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9199.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9199.noarch.rpm</a>
+174.9 MiB downloaded in 143.89 seconds (1.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9199.noarch.rpm last accessed
+2019-10-25 20:46:27 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9199.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9199.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9223.noarch.rpm last accessed
+2019-10-28 14:07:26 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9223.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9223.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9223.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9223.noarch.rpm</a>
+174.9 MiB downloaded in 131.47 seconds (1.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9223.noarch.rpm last accessed
+2019-10-28 14:07:26 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9223.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9223.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9205.noarch.rpm last accessed
+2019-10-26 02:46:34 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9205.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9205.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9205.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9205.noarch.rpm</a>
+174.9 MiB downloaded in 17.76 seconds (9.8 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9205.noarch.rpm last accessed
+2019-10-26 02:46:34 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9205.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9205.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9298.noarch.rpm last accessed
+2019-10-30 17:54:49 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9298.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9298.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9298.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9298.noarch.rpm</a>
+174.9 MiB downloaded in 7.78 seconds (22.5 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9298.noarch.rpm last accessed
+2019-10-30 17:54:49 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9298.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9298.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9355.noarch.rpm last accessed
+2019-10-31 15:00:41 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9355.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9355.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9355.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9355.noarch.rpm</a>
+174.9 MiB downloaded in 7.9 seconds (22.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9355.noarch.rpm last accessed
+2019-10-31 15:00:41 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9355.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9355.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9393.noarch.rpm last accessed
+2019-10-31 20:27:42 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9393.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9393.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9393.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9393.noarch.rpm</a>
+174.9 MiB downloaded in 7.38 seconds (23.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9393.noarch.rpm last accessed
+2019-10-31 20:27:42 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9393.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9393.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9370.noarch.rpm last accessed
+2019-10-31 15:33:38 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9370.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9370.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9370.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9370.noarch.rpm</a>
+174.9 MiB downloaded in 7.68 seconds (22.8 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9370.noarch.rpm last accessed
+2019-10-31 15:33:38 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9370.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9370.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9402.noarch.rpm last accessed
+2019-10-31 20:55:20 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9402.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9402.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9402.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9402.noarch.rpm</a>
+174.9 MiB downloaded in 9.08 seconds (19.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-5.0.0-9402.noarch.rpm last accessed
+2019-10-31 20:55:20 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9402.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-5.0.0-9402.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.3-8005.noarch.rpm last accessed
+2019-10-03 02:40:41 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8005.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8005.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8005.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8005.noarch.rpm</a>
+148.0 MiB downloaded in 6.08 seconds (24.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.3-8005.noarch.rpm last accessed
+2019-10-03 02:40:41 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8005.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8005.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.3-8067.noarch.rpm last accessed
+2019-10-03 19:49:39 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8067.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8067.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8067.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8067.noarch.rpm</a>
+148.0 MiB downloaded in 14.39 seconds (10.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.3-8067.noarch.rpm last accessed
+2019-10-03 19:49:39 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8067.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8067.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.4-8098.noarch.rpm last accessed
+2019-10-03 20:59:25 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8098.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8098.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8098.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8098.noarch.rpm</a>
+148.0 MiB downloaded in 6.63 seconds (22.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.4-8098.noarch.rpm last accessed
+2019-10-03 20:59:25 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8098.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8098.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.3-8063.noarch.rpm last accessed
+2019-10-03 19:42:34 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8063.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8063.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8063.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8063.noarch.rpm</a>
+148.0 MiB downloaded in 7.03 seconds (21.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.3-8063.noarch.rpm last accessed
+2019-10-03 19:42:34 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8063.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.3-8063.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.1-8107.noarch.rpm last accessed
+2019-10-03 21:20:39 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8107.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8107.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8107.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8107.noarch.rpm</a>
+151.3 MiB downloaded in 7.3 seconds (20.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.1-8107.noarch.rpm last accessed
+2019-10-03 21:20:39 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8107.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8107.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.1-8093.noarch.rpm last accessed
+2019-10-03 20:50:21 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8093.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8093.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8093.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8093.noarch.rpm</a>
+151.3 MiB downloaded in 10.64 seconds (14.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.1-8093.noarch.rpm last accessed
+2019-10-03 20:50:21 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8093.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8093.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.4-8565.noarch.rpm last accessed
+2019-10-11 22:36:52 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8565.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8565.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8565.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8565.noarch.rpm</a>
+148.0 MiB downloaded in 7.7 seconds (19.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.4-8565.noarch.rpm last accessed
+2019-10-11 22:36:52 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8565.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.4-8565.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.1-8096.noarch.rpm last accessed
+2019-10-03 20:52:07 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8096.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8096.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8096.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8096.noarch.rpm</a>
+151.3 MiB downloaded in 6.51 seconds (23.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.1-8096.noarch.rpm last accessed
+2019-10-03 20:52:07 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8096.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.1-8096.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.2-9346.noarch.rpm last accessed
+2019-10-31 14:44:34 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9346.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9346.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9346.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9346.noarch.rpm</a>
+151.3 MiB downloaded in 8.04 seconds (18.8 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.2-9346.noarch.rpm last accessed
+2019-10-31 14:44:34 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9346.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9346.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.2-9304.noarch.rpm last accessed
+2019-10-30 18:04:28 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9304.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9304.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9304.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9304.noarch.rpm</a>
+151.3 MiB downloaded in 9.99 seconds (15.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.2-9304.noarch.rpm last accessed
+2019-10-30 18:04:28 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9304.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.2-9304.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9199.noarch.rpm last accessed
+2019-10-25 20:45:03 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9199.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9199.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9199.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9199.noarch.rpm</a>
+174.9 MiB downloaded in 12.02 seconds (14.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9199.noarch.rpm last accessed
+2019-10-25 20:45:03 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9199.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9199.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9205.noarch.rpm last accessed
+2019-10-26 02:45:11 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9205.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9205.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9205.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9205.noarch.rpm</a>
+174.9 MiB downloaded in 7.1 seconds (24.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9205.noarch.rpm last accessed
+2019-10-26 02:45:11 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9205.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9205.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9223.noarch.rpm last accessed
+2019-10-28 14:05:59 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9223.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9223.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9223.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9223.noarch.rpm</a>
+174.9 MiB downloaded in 12.94 seconds (13.5 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9223.noarch.rpm last accessed
+2019-10-28 14:05:59 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9223.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9223.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9298.noarch.rpm last accessed
+2019-10-30 17:53:16 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9298.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9298.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9298.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9298.noarch.rpm</a>
+174.9 MiB downloaded in 9.88 seconds (17.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9298.noarch.rpm last accessed
+2019-10-30 17:53:16 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9298.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9298.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9355.noarch.rpm last accessed
+2019-10-31 14:59:04 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9355.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9355.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9355.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9355.noarch.rpm</a>
+174.9 MiB downloaded in 8.78 seconds (19.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9355.noarch.rpm last accessed
+2019-10-31 14:59:04 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9355.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9355.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9370.noarch.rpm last accessed
+2019-10-31 15:31:56 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9370.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9370.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9370.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9370.noarch.rpm</a>
+174.9 MiB downloaded in 7.28 seconds (24.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9370.noarch.rpm last accessed
+2019-10-31 15:31:56 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9370.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9370.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.3-8005.noarch.rpm last accessed
+2019-10-03 02:39:32 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8005.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8005.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8005.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8005.noarch.rpm</a>
+148.0 MiB downloaded in 6.4 seconds (23.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.3-8005.noarch.rpm last accessed
+2019-10-03 02:39:32 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8005.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8005.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9393.noarch.rpm last accessed
+2019-10-31 20:26:12 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9393.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9393.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9393.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9393.noarch.rpm</a>
+174.9 MiB downloaded in 13.87 seconds (12.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9393.noarch.rpm last accessed
+2019-10-31 20:26:12 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9393.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9393.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9402.noarch.rpm last accessed
+2019-10-31 20:53:44 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9402.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9402.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9402.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9402.noarch.rpm</a>
+174.9 MiB downloaded in 7.63 seconds (22.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-5.0.0-9402.noarch.rpm last accessed
+2019-10-31 20:53:44 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9402.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-5.0.0-9402.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.3-8063.noarch.rpm last accessed
+2019-10-03 19:41:44 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8063.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8063.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8063.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8063.noarch.rpm</a>
+148.0 MiB downloaded in 8.26 seconds (17.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.3-8063.noarch.rpm last accessed
+2019-10-03 19:41:44 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8063.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8063.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.4-8098.noarch.rpm last accessed
+2019-10-03 20:58:22 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8098.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8098.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8098.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8098.noarch.rpm</a>
+148.0 MiB downloaded in 8.9 seconds (16.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.4-8098.noarch.rpm last accessed
+2019-10-03 20:58:22 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8098.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8098.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.3-8067.noarch.rpm last accessed
+2019-10-03 19:48:44 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8067.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8067.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8067.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8067.noarch.rpm</a>
+148.0 MiB downloaded in 6.47 seconds (22.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.3-8067.noarch.rpm last accessed
+2019-10-03 19:48:44 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8067.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.3-8067.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.4-8565.noarch.rpm last accessed
+2019-10-11 22:35:52 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8565.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8565.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8565.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8565.noarch.rpm</a>
+148.0 MiB downloaded in 13.07 seconds (11.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.4-8565.noarch.rpm last accessed
+2019-10-11 22:35:52 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8565.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.4-8565.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.1-8093.noarch.rpm last accessed
+2019-10-03 20:51:43 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8093.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8093.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8093.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8093.noarch.rpm</a>
+151.3 MiB downloaded in 10.08 seconds (15.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.1-8093.noarch.rpm last accessed
+2019-10-03 20:51:43 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8093.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8093.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.1-8096.noarch.rpm last accessed
+2019-10-03 20:53:34 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8096.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8096.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8096.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8096.noarch.rpm</a>
+151.3 MiB downloaded in 8.54 seconds (17.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.1-8096.noarch.rpm last accessed
+2019-10-03 20:53:34 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8096.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8096.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.2-9304.noarch.rpm last accessed
+2019-10-30 18:06:00 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9304.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9304.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9304.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9304.noarch.rpm</a>
+151.3 MiB downloaded in 11.87 seconds (12.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.2-9304.noarch.rpm last accessed
+2019-10-30 18:06:00 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9304.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9304.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.1-8107.noarch.rpm last accessed
+2019-10-03 21:21:59 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8107.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8107.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8107.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8107.noarch.rpm</a>
+151.3 MiB downloaded in 6.17 seconds (24.5 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.1-8107.noarch.rpm last accessed
+2019-10-03 21:21:59 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8107.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.1-8107.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.2-9346.noarch.rpm last accessed
+2019-10-31 14:46:15 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9346.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9346.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9346.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9346.noarch.rpm</a>
+151.3 MiB downloaded in 7.02 seconds (21.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.2-9346.noarch.rpm last accessed
+2019-10-31 14:46:15 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9346.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.2-9346.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9199.noarch.rpm last accessed
+2019-10-25 20:44:53 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9199.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9199.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9199.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9199.noarch.rpm</a>
+174.9 MiB downloaded in 7.54 seconds (23.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9199.noarch.rpm last accessed
+2019-10-25 20:44:53 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9199.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9199.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9298.noarch.rpm last accessed
+2019-10-30 17:53:25 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9298.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9298.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9298.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9298.noarch.rpm</a>
+174.9 MiB downloaded in 7.24 seconds (24.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9298.noarch.rpm last accessed
+2019-10-30 17:53:25 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9298.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9298.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9223.noarch.rpm last accessed
+2019-10-28 14:05:49 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9223.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9223.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9223.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9223.noarch.rpm</a>
+174.9 MiB downloaded in 7.27 seconds (24.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9223.noarch.rpm last accessed
+2019-10-28 14:05:49 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9223.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9223.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9205.noarch.rpm last accessed
+2019-10-26 02:45:07 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9205.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9205.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9205.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9205.noarch.rpm</a>
+174.9 MiB downloaded in 7.63 seconds (22.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9205.noarch.rpm last accessed
+2019-10-26 02:45:07 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9205.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9205.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9355.noarch.rpm last accessed
+2019-10-31 14:59:09 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9355.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9355.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9355.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9355.noarch.rpm</a>
+174.9 MiB downloaded in 7.29 seconds (24.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9355.noarch.rpm last accessed
+2019-10-31 14:59:09 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9355.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9355.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9370.noarch.rpm last accessed
+2019-10-31 15:32:05 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9370.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9370.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9370.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9370.noarch.rpm</a>
+174.9 MiB downloaded in 8.47 seconds (20.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9370.noarch.rpm last accessed
+2019-10-31 15:32:05 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9370.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9370.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9393.noarch.rpm last accessed
+2019-10-31 20:26:08 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9393.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9393.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9393.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9393.noarch.rpm</a>
+174.9 MiB downloaded in 8.64 seconds (20.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9393.noarch.rpm last accessed
+2019-10-31 20:26:08 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9393.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9393.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9402.noarch.rpm last accessed
+2019-10-31 20:53:53 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9402.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9402.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9402.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9402.noarch.rpm</a>
+174.9 MiB downloaded in 7.87 seconds (22.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-9402.noarch.rpm last accessed
+2019-10-31 20:53:53 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9402.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-9402.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1567382400000, :to=&gt;1569974400000, :repos=&gt;“yum-test”}</p>
+</dd><dt>DEBUG
+<dd>
+<p>Got 6 results from search in 0.18443324000691064 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189961580680; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189961567780; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189961565220; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189961432820; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Enqueue URLs for workers to discover:   0.000069   0.000160   0.000229 ( 
+0.000276)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Dequeue found Artifacts from workers:   0.015738   0.006670   0.022408 ( 
+0.404425)</p>
+</dd><dt>DEBUG
+<dd>
+<p>6 artifacts fetched in 0.4 seconds</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.002142   0.001514   0.003656 (  0.184433)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.016308   0.006864   0.023172 (  0.404893)</p>
+</dd><dt>DEBUG
+<dd>
+<p>6 artifacts fetched in 0.59 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-4.0.3-263.noarch.rpm last accessed
+2019-09-26 19:27:03 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-4.0.3-263.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-4.0.3-263.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-4.0.3-263.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-4.0.3-263.noarch.rpm</a>
+76.0 MiB downloaded in 3.88 seconds (19.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-4.0.3-263.noarch.rpm last accessed
+2019-09-26 19:27:03 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-4.0.3-263.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-4.0.3-263.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-dev-5.0.0-251.noarch.rpm last accessed
+2019-09-17 17:10:30 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-5.0.0-251.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-5.0.0-251.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-5.0.0-251.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-5.0.0-251.noarch.rpm</a>
+76.0 MiB downloaded in 4.04 seconds (18.8 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-dev-5.0.0-251.noarch.rpm last accessed
+2019-09-17 17:10:30 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-5.0.0-251.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-5.0.0-251.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-5.0.0-251.noarch.rpm last accessed
+2019-09-08 16:10:48 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-5.0.0-251.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-5.0.0-251.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-5.0.0-251.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-5.0.0-251.noarch.rpm</a>
+76.0 MiB downloaded in 3.79 seconds (20.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-5.0.0-251.noarch.rpm last accessed
+2019-09-08 16:10:48 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-5.0.0-251.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-5.0.0-251.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-prod-5.0.0-251.noarch.rpm last accessed
+2019-09-05 13:48:21 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-5.0.0-251.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-5.0.0-251.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-5.0.0-251.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-5.0.0-251.noarch.rpm</a>
+76.0 MiB downloaded in 4.1 seconds (18.5 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-prod-5.0.0-251.noarch.rpm last accessed
+2019-09-05 13:48:21 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-5.0.0-251.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-5.0.0-251.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.2-4079.noarch.rpm last accessed
+2019-09-16 19:34:53 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4079.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4079.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4079.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4079.noarch.rpm</a>
+148.0 MiB downloaded in 6.09 seconds (24.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.2-4079.noarch.rpm last accessed
+2019-09-16 19:34:53 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4079.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4079.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.0-4666.noarch.rpm last accessed
+2019-09-13 21:07:18 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4666.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4666.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4666.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4666.noarch.rpm</a>
+151.2 MiB downloaded in 9.21 seconds (16.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.0-4666.noarch.rpm last accessed
+2019-09-13 21:07:18 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4666.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4666.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1564790400000, :to=&gt;1567382400000, :repos=&gt;“yum-test”}</p>
+</dd></dl>
+
+<pre>HTTP 404 Not Found fetching: /api/search/dates -- assuming no assets for this date range</pre>
+<dl class="rdoc-list label-list"><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.004180   0.001032   0.005212 (  0.159167)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.000001   0.000003   0.000004 (  0.000003)</p>
+</dd><dt>DEBUG
+<dd>
+<p>0 artifacts fetched in 0.16 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1562198400000, :to=&gt;1564790400000, :repos=&gt;“yum-test”}</p>
+</dd><dt>DEBUG
+<dd>
+<p>Got 19 results from search in 0.20110942999599501 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:70159532686780; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:70159532686420; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:70159532686060; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:70159532685720; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Enqueue URLs for workers to discover:   0.000145   0.000000   0.000145 ( 
+0.000184)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Dequeue found Artifacts from workers:   0.038829   0.023915   0.062744 ( 
+0.857921)</p>
+</dd><dt>DEBUG
+<dd>
+<p>19 artifacts fetched in 0.86 seconds</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.002429   0.001086   0.003515 (  0.201109)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.039677   0.023915   0.063592 (  0.858278)</p>
+</dd><dt>DEBUG
+<dd>
+<p>19 artifacts fetched in 1.06 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.0.2-4079.noarch.rpm last accessed
+2020-01-30 20:27:17 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4079.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4079.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4079.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4079.noarch.rpm</a>
+148.0 MiB downloaded in 6.56 seconds (22.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.0.2-4079.noarch.rpm last accessed
+2020-01-30 20:27:17 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4079.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4079.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.0.2-4049.noarch.rpm last accessed
+2020-01-30 20:27:00 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4049.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4049.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4049.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4049.noarch.rpm</a>
+148.0 MiB downloaded in 6.03 seconds (24.5 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.0.2-4049.noarch.rpm last accessed
+2020-01-30 20:27:00 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4049.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4049.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.0-4459.noarch.rpm last accessed
+2020-01-30 20:27:23 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4459.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4459.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4459.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4459.noarch.rpm</a>
+151.2 MiB downloaded in 6.54 seconds (23.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.0-4459.noarch.rpm last accessed
+2020-01-30 20:27:23 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4459.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4459.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.0.2-4056.noarch.rpm last accessed
+2020-01-30 20:27:09 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4056.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4056.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4056.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4056.noarch.rpm</a>
+148.0 MiB downloaded in 12.31 seconds (12.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.0.2-4056.noarch.rpm last accessed
+2020-01-30 20:27:09 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4056.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.2-4056.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.0-4560.noarch.rpm last accessed
+2020-01-30 20:27:30 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4560.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4560.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4560.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4560.noarch.rpm</a>
+151.2 MiB downloaded in 12.04 seconds (12.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.1.0-4560.noarch.rpm last accessed
+2020-01-30 20:27:30 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4560.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.1.0-4560.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.2-4056.noarch.rpm last accessed
+2020-01-30 20:27:43 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4056.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4056.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4056.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4056.noarch.rpm</a>
+148.0 MiB downloaded in 10.42 seconds (14.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.2-4056.noarch.rpm last accessed
+2020-01-30 20:27:43 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4056.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4056.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.2-4049.noarch.rpm last accessed
+2020-01-30 20:27:37 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4049.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4049.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4049.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4049.noarch.rpm</a>
+148.0 MiB downloaded in 9.04 seconds (16.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.2-4049.noarch.rpm last accessed
+2020-01-30 20:27:37 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4049.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.2-4049.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.0-4459.noarch.rpm last accessed
+2020-01-30 20:27:50 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4459.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4459.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4459.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4459.noarch.rpm</a>
+151.2 MiB downloaded in 6.45 seconds (23.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.0-4459.noarch.rpm last accessed
+2020-01-30 20:27:50 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4459.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4459.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.0-4560.noarch.rpm last accessed
+2020-01-30 20:27:57 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4560.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4560.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4560.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4560.noarch.rpm</a>
+151.2 MiB downloaded in 6.42 seconds (23.5 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.1.0-4560.noarch.rpm last accessed
+2020-01-30 20:27:57 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4560.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.1.0-4560.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.2-4049.noarch.rpm last accessed
+2020-01-30 20:28:18 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4049.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4049.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4049.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4049.noarch.rpm</a>
+148.0 MiB downloaded in 6.79 seconds (21.8 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.2-4049.noarch.rpm last accessed
+2020-01-30 20:28:18 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4049.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4049.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.2-4056.noarch.rpm last accessed
+2020-01-30 20:28:09 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4056.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4056.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4056.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4056.noarch.rpm</a>
+148.0 MiB downloaded in 7.01 seconds (21.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.2-4056.noarch.rpm last accessed
+2020-01-30 20:28:09 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4056.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4056.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.2-4079.noarch.rpm last accessed
+2020-01-30 20:28:24 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4079.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4079.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4079.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4079.noarch.rpm</a>
+148.0 MiB downloaded in 6.17 seconds (24.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.2-4079.noarch.rpm last accessed
+2020-01-30 20:28:24 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4079.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.2-4079.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.0-4459.noarch.rpm last accessed
+2020-01-30 20:28:32 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4459.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4459.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4459.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4459.noarch.rpm</a>
+151.2 MiB downloaded in 7.05 seconds (21.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.0-4459.noarch.rpm last accessed
+2020-01-30 20:28:32 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4459.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4459.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.0-4666.noarch.rpm last accessed
+2020-01-30 20:28:46 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4666.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4666.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4666.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4666.noarch.rpm</a>
+151.2 MiB downloaded in 6.9 seconds (21.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.0-4666.noarch.rpm last accessed
+2020-01-30 20:28:46 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4666.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4666.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.0-4560.noarch.rpm last accessed
+2020-01-30 20:28:39 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4560.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4560.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4560.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4560.noarch.rpm</a>
+151.2 MiB downloaded in 18.87 seconds (8.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.1.0-4560.noarch.rpm last accessed
+2020-01-30 20:28:39 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4560.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.1.0-4560.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-4604.noarch.rpm last accessed
+2020-01-30 20:36:38 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4604.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4604.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4604.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4604.noarch.rpm</a>
+155.3 MiB downloaded in 9.49 seconds (16.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-4604.noarch.rpm last accessed
+2020-01-30 20:36:38 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4604.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4604.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-4611.noarch.rpm last accessed
+2020-01-30 20:36:45 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4611.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4611.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4611.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4611.noarch.rpm</a>
+155.3 MiB downloaded in 6.56 seconds (23.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-4611.noarch.rpm last accessed
+2020-01-30 20:36:45 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4611.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4611.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-4621.noarch.rpm last accessed
+2020-01-30 20:43:47 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4621.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4621.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4621.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4621.noarch.rpm</a>
+155.3 MiB downloaded in 6.41 seconds (24.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-4621.noarch.rpm last accessed
+2020-01-30 20:43:47 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4621.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4621.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-4627.noarch.rpm last accessed
+2020-01-30 20:43:40 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4627.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4627.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4627.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4627.noarch.rpm</a>
+155.3 MiB downloaded in 6.78 seconds (22.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-5.0.0-4627.noarch.rpm last accessed
+2020-01-30 20:43:40 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4627.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-5.0.0-4627.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1559606400000, :to=&gt;1562198400000, :repos=&gt;“yum-test”}</p>
+</dd></dl>
+
+<pre>HTTP 404 Not Found fetching: /api/search/dates -- assuming no assets for this date range</pre>
+<dl class="rdoc-list label-list"><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.002618   0.000858   0.003476 (  0.149399)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.000001   0.000002   0.000003 (  0.000053)</p>
+</dd><dt>DEBUG
+<dd>
+<p>0 artifacts fetched in 0.15 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1557014400000, :to=&gt;1559606400000, :repos=&gt;“yum-test”}</p>
+</dd><dt>DEBUG
+<dd>
+<p>Got 7 results from search in 0.1789931359962793 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189963502620; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189963497380; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189963496880; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189963496440; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Enqueue URLs for workers to discover:   0.000075   0.000172   0.000247 ( 
+0.000316)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Dequeue found Artifacts from workers:   0.012234   0.011058   0.023292 ( 
+0.317532)</p>
+</dd><dt>DEBUG
+<dd>
+<p>7 artifacts fetched in 0.32 seconds</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.001123   0.002428   0.003551 (  0.178993)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.012828   0.011240   0.024068 (  0.318009)</p>
+</dd><dt>DEBUG
+<dd>
+<p>7 artifacts fetched in 0.5 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.0.1-2660.noarch.rpm last accessed
+2020-01-30 20:43:55 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.1-2660.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.1-2660.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.1-2660.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.1-2660.noarch.rpm</a>
+147.9 MiB downloaded in 6.2 seconds (23.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-4.0.1-2660.noarch.rpm last accessed
+2020-01-30 20:43:55 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.1-2660.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-4.0.1-2660.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.1-2660.noarch.rpm last accessed
+2020-01-30 20:44:12 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2660.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2660.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2660.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2660.noarch.rpm</a>
+147.9 MiB downloaded in 11.43 seconds (12.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.1-2660.noarch.rpm last accessed
+2020-01-30 20:44:12 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2660.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2660.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.1-2639.noarch.rpm last accessed
+2020-01-30 20:44:19 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2639.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2639.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2639.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2639.noarch.rpm</a>
+147.9 MiB downloaded in 7.13 seconds (20.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.1-2639.noarch.rpm last accessed
+2020-01-30 20:44:19 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2639.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2639.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.1-2645.noarch.rpm last accessed
+2020-01-30 20:44:05 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2645.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2645.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2645.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2645.noarch.rpm</a>
+147.9 MiB downloaded in 6.25 seconds (23.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.1-2645.noarch.rpm last accessed
+2020-01-30 20:44:05 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2645.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.1-2645.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.1-2645.noarch.rpm last accessed
+2020-01-30 20:44:39 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2645.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2645.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2645.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2645.noarch.rpm</a>
+147.9 MiB downloaded in 6.02 seconds (24.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.1-2645.noarch.rpm last accessed
+2020-01-30 20:44:39 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2645.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2645.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.1-2639.noarch.rpm last accessed
+2020-01-30 20:44:27 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2639.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2639.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2639.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2639.noarch.rpm</a>
+147.9 MiB downloaded in 6.1 seconds (24.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.1-2639.noarch.rpm last accessed
+2020-01-30 20:44:27 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2639.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2639.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.1-2660.noarch.rpm last accessed
+2020-01-30 20:44:33 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2660.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2660.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2660.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2660.noarch.rpm</a>
+147.9 MiB downloaded in 8.58 seconds (17.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.1-2660.noarch.rpm last accessed
+2020-01-30 20:44:33 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2660.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.1-2660.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1554422400000, :to=&gt;1557014400000, :repos=&gt;“yum-test”}</p>
+</dd><dt>DEBUG
+<dd>
+<p>Got 2 results from search in 0.1706787319999421 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189959109260; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189959087360; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189959085160; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189959083480; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Enqueue URLs for workers to discover:   0.000258   0.000000   0.000258 ( 
+0.000354)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Dequeue found Artifacts from workers:   0.006802   0.000970   0.007772 ( 
+0.166850)</p>
+</dd><dt>DEBUG
+<dd>
+<p>2 artifacts fetched in 0.17 seconds</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.003734   0.000000   0.003734 (  0.170679)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.007314   0.000970   0.008284 (  0.167319)</p>
+</dd><dt>DEBUG
+<dd>
+<p>2 artifacts fetched in 0.34 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.0-2373.noarch.rpm last accessed
+2020-01-30 20:44:53 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.0-2373.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.0-2373.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.0-2373.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.0-2373.noarch.rpm</a>
+147.9 MiB downloaded in 6.53 seconds (22.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-4.0.0-2373.noarch.rpm last accessed
+2020-01-30 20:44:53 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.0-2373.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-4.0.0-2373.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.0-2373.noarch.rpm last accessed
+2020-01-30 20:44:47 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.0-2373.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.0-2373.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.0-2373.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.0-2373.noarch.rpm</a>
+147.9 MiB downloaded in 6.61 seconds (22.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-4.0.0-2373.noarch.rpm last accessed
+2020-01-30 20:44:47 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.0-2373.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-4.0.0-2373.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1551830400000, :to=&gt;1554422400000, :repos=&gt;“yum-test”}</p>
+</dd><dt>DEBUG
+<dd>
+<p>Got 42 results from search in 0.3118258159956895 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:70159532410580; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:70159532410160; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:70159532409680; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:70159532409240; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Enqueue URLs for workers to discover:   0.000273   0.000000   0.000273 ( 
+0.000432)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Dequeue found Artifacts from workers:   0.107261   0.039775   0.147036 ( 
+1.836427)</p>
+</dd><dt>DEBUG
+<dd>
+<p>42 artifacts fetched in 1.84 seconds</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.004461   0.000000   0.004461 (  0.311826)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.107657   0.039854   0.147511 (  1.836983)</p>
+</dd><dt>DEBUG
+<dd>
+<p>42 artifacts fetched in 2.15 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-prod-3.4.5-122.noarch.rpm last accessed
+2020-01-30 20:46:02 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-122.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-122.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-122.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-122.noarch.rpm</a>
+88.0 MiB downloaded in 4.65 seconds (18.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-prod-3.4.5-122.noarch.rpm last accessed
+2020-01-30 20:46:02 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-122.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-122.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-prod-3.4.5-111.noarch.rpm last accessed
+2020-01-30 20:46:08 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-111.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-111.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-111.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-111.noarch.rpm</a>
+88.0 MiB downloaded in 5.32 seconds (16.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-prod-3.4.5-111.noarch.rpm last accessed
+2020-01-30 20:46:08 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-111.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-111.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-prod-3.4.5-84.noarch.rpm last accessed
+2020-01-30 20:46:19 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-84.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-84.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-84.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-84.noarch.rpm</a>
+88.0 MiB downloaded in 4.44 seconds (19.8 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-prod-3.4.5-84.noarch.rpm last accessed
+2020-01-30 20:46:19 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-84.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-84.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-dev-3.4.5-122.noarch.rpm last accessed
+2020-01-30 20:45:02 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-3.4.5-122.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-3.4.5-122.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-3.4.5-122.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-3.4.5-122.noarch.rpm</a>
+88.0 MiB downloaded in 3.98 seconds (22.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-dev-3.4.5-122.noarch.rpm last accessed
+2020-01-30 20:45:02 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-3.4.5-122.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-dev-3.4.5-122.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-prod-3.4.5-93.noarch.rpm last accessed
+2020-01-30 20:46:27 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-93.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-93.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-93.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-93.noarch.rpm</a>
+88.0 MiB downloaded in 4.86 seconds (18.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-prod-3.4.5-93.noarch.rpm last accessed
+2020-01-30 20:46:27 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-93.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-prod-3.4.5-93.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-3.4.5-122.noarch.rpm last accessed
+2020-01-30 20:46:31 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-122.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-122.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-122.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-122.noarch.rpm</a>
+88.0 MiB downloaded in 4.05 seconds (21.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-3.4.5-122.noarch.rpm last accessed
+2020-01-30 20:46:31 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-122.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-122.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-3.4.5-84.noarch.rpm last accessed
+2020-01-30 20:46:35 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-84.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-84.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-84.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-84.noarch.rpm</a>
+88.0 MiB downloaded in 4.06 seconds (21.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-3.4.5-84.noarch.rpm last accessed
+2020-01-30 20:46:35 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-84.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-84.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-3.4.5-111.noarch.rpm last accessed
+2020-01-30 20:46:23 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-111.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-111.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-111.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-111.noarch.rpm</a>
+88.0 MiB downloaded in 4.07 seconds (21.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-3.4.5-111.noarch.rpm last accessed
+2020-01-30 20:46:23 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-111.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-111.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-3.4.5-93.noarch.rpm last accessed
+2020-01-30 20:46:54 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-93.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-93.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-93.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-93.noarch.rpm</a>
+88.0 MiB downloaded in 3.71 seconds (23.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-app-test-3.4.5-93.noarch.rpm last accessed
+2020-01-30 20:46:54 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-93.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-app-test-3.4.5-93.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1419.noarch.rpm last accessed
+2020-01-30 20:46:59 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1419.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1419.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1419.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1419.noarch.rpm</a>
+160.0 MiB downloaded in 6.82 seconds (23.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1419.noarch.rpm last accessed
+2020-01-30 20:46:59 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1419.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1419.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-3.4.5-1895.noarch.rpm last accessed
+2020-01-30 20:46:39 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1895.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1895.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1895.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1895.noarch.rpm</a>
+160.0 MiB downloaded in 7.29 seconds (21.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-3.4.5-1895.noarch.rpm last accessed
+2020-01-30 20:46:39 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1895.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1895.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-3.4.5-1969.noarch.rpm last accessed
+2020-01-30 20:46:46 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1969.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1969.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1969.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1969.noarch.rpm</a>
+160.0 MiB downloaded in 7.81 seconds (20.5 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-dev-3.4.5-1969.noarch.rpm last accessed
+2020-01-30 20:46:46 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1969.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-dev-3.4.5-1969.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1425.noarch.rpm last accessed
+2020-01-30 20:47:19 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1425.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1425.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1425.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1425.noarch.rpm</a>
+160.0 MiB downloaded in 6.39 seconds (25.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1425.noarch.rpm last accessed
+2020-01-30 20:47:19 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1425.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1425.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1446.noarch.rpm last accessed
+2020-01-30 20:47:33 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1446.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1446.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1446.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1446.noarch.rpm</a>
+160.0 MiB downloaded in 6.54 seconds (24.5 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1446.noarch.rpm last accessed
+2020-01-30 20:47:33 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1446.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1446.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1437.noarch.rpm last accessed
+2020-01-30 20:47:26 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1437.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1437.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1437.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1437.noarch.rpm</a>
+160.0 MiB downloaded in 6.56 seconds (24.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1437.noarch.rpm last accessed
+2020-01-30 20:47:26 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1437.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1437.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1431.noarch.rpm last accessed
+2020-01-30 20:47:06 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1431.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1431.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1431.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1431.noarch.rpm</a>
+160.0 MiB downloaded in 6.69 seconds (23.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1431.noarch.rpm last accessed
+2020-01-30 20:47:06 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1431.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1431.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1482.noarch.rpm last accessed
+2020-01-30 20:47:50 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1482.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1482.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1482.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1482.noarch.rpm</a>
+160.0 MiB downloaded in 8.57 seconds (18.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1482.noarch.rpm last accessed
+2020-01-30 20:47:50 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1482.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1482.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1522.noarch.rpm last accessed
+2020-01-30 20:47:58 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1522.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1522.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1522.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1522.noarch.rpm</a>
+160.0 MiB downloaded in 6.47 seconds (24.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1522.noarch.rpm last accessed
+2020-01-30 20:47:58 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1522.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1522.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1699.noarch.rpm last accessed
+2020-01-30 20:48:11 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1699.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1699.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1699.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1699.noarch.rpm</a>
+160.0 MiB downloaded in 6.78 seconds (23.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1699.noarch.rpm last accessed
+2020-01-30 20:48:11 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1699.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1699.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1683.noarch.rpm last accessed
+2020-01-30 20:47:43 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1683.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1683.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1683.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1683.noarch.rpm</a>
+160.0 MiB downloaded in 6.4 seconds (25.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1683.noarch.rpm last accessed
+2020-01-30 20:47:43 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1683.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1683.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1735.noarch.rpm last accessed
+2020-01-30 20:48:26 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1735.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1735.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1735.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1735.noarch.rpm</a>
+160.0 MiB downloaded in 12.07 seconds (13.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1735.noarch.rpm last accessed
+2020-01-30 20:48:26 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1735.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1735.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1787.noarch.rpm last accessed
+2020-01-30 20:48:34 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1787.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1787.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1787.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1787.noarch.rpm</a>
+160.0 MiB downloaded in 7.32 seconds (21.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1787.noarch.rpm last accessed
+2020-01-30 20:48:34 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1787.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1787.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1822.noarch.rpm last accessed
+2020-01-30 20:48:18 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1822.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1822.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1822.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1822.noarch.rpm</a>
+160.0 MiB downloaded in 9.85 seconds (16.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1822.noarch.rpm last accessed
+2020-01-30 20:48:18 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1822.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1822.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1878.noarch.rpm last accessed
+2020-01-30 20:48:41 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1878.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1878.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1878.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1878.noarch.rpm</a>
+160.0 MiB downloaded in 9.48 seconds (16.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1878.noarch.rpm last accessed
+2020-01-30 20:48:41 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1878.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1878.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1895.noarch.rpm last accessed
+2020-01-30 20:48:51 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1895.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1895.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1895.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1895.noarch.rpm</a>
+160.0 MiB downloaded in 6.6 seconds (24.2 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1895.noarch.rpm last accessed
+2020-01-30 20:48:51 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1895.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1895.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1969.noarch.rpm last accessed
+2020-01-30 20:49:04 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1969.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1969.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1969.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1969.noarch.rpm</a>
+160.0 MiB downloaded in 7.34 seconds (21.8 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1969.noarch.rpm last accessed
+2020-01-30 20:49:04 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1969.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1969.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1419.noarch.rpm last accessed
+2020-01-30 20:48:57 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1419.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1419.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1419.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1419.noarch.rpm</a>
+160.0 MiB downloaded in 6.63 seconds (24.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1419.noarch.rpm last accessed
+2020-01-30 20:48:57 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1419.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1419.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1425.noarch.rpm last accessed
+2020-01-30 20:49:11 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1425.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1425.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1425.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1425.noarch.rpm</a>
+160.0 MiB downloaded in 6.76 seconds (23.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1425.noarch.rpm last accessed
+2020-01-30 20:49:11 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1425.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1425.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1431.noarch.rpm last accessed
+2020-01-30 20:49:18 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1431.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1431.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1431.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1431.noarch.rpm</a>
+160.0 MiB downloaded in 9.82 seconds (16.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1431.noarch.rpm last accessed
+2020-01-30 20:49:18 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1431.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1431.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1437.noarch.rpm last accessed
+2020-01-30 20:49:25 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1437.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1437.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1437.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1437.noarch.rpm</a>
+160.0 MiB downloaded in 7.37 seconds (21.7 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1437.noarch.rpm last accessed
+2020-01-30 20:49:25 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1437.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1437.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1446.noarch.rpm last accessed
+2020-01-30 20:49:31 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1446.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1446.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1446.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1446.noarch.rpm</a>
+160.0 MiB downloaded in 7.15 seconds (22.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1446.noarch.rpm last accessed
+2020-01-30 20:49:31 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1446.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1446.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1482.noarch.rpm last accessed
+2020-01-30 20:50:06 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1482.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1482.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1482.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1482.noarch.rpm</a>
+160.0 MiB downloaded in 8.9 seconds (18.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1482.noarch.rpm last accessed
+2020-01-30 20:50:06 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1482.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1482.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1522.noarch.rpm last accessed
+2020-01-30 20:49:42 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1522.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1522.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1522.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1522.noarch.rpm</a>
+160.0 MiB downloaded in 6.55 seconds (24.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1522.noarch.rpm last accessed
+2020-01-30 20:49:42 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1522.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1522.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1683.noarch.rpm last accessed
+2020-01-30 20:49:59 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1683.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1683.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1683.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1683.noarch.rpm</a>
+160.0 MiB downloaded in 7.11 seconds (22.5 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1683.noarch.rpm last accessed
+2020-01-30 20:49:59 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1683.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1683.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1699.noarch.rpm last accessed
+2020-01-30 20:49:52 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1699.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1699.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1699.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1699.noarch.rpm</a>
+160.0 MiB downloaded in 6.58 seconds (24.3 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1699.noarch.rpm last accessed
+2020-01-30 20:49:52 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1699.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1699.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1735.noarch.rpm last accessed
+2020-01-30 20:50:33 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1735.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1735.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1735.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1735.noarch.rpm</a>
+160.0 MiB downloaded in 6.5 seconds (24.6 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1735.noarch.rpm last accessed
+2020-01-30 20:50:33 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1735.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1735.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1787.noarch.rpm last accessed
+2020-01-30 20:50:12 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1787.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1787.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1787.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1787.noarch.rpm</a>
+160.0 MiB downloaded in 11.35 seconds (14.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1787.noarch.rpm last accessed
+2020-01-30 20:50:12 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1787.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1787.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1878.noarch.rpm last accessed
+2020-01-30 20:50:21 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1878.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1878.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1878.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1878.noarch.rpm</a>
+160.0 MiB downloaded in 8.71 seconds (18.4 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1878.noarch.rpm last accessed
+2020-01-30 20:50:21 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1878.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1878.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1822.noarch.rpm last accessed
+2020-01-30 20:50:40 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1822.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1822.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1822.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1822.noarch.rpm</a>
+160.0 MiB downloaded in 6.65 seconds (24.0 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1822.noarch.rpm last accessed
+2020-01-30 20:50:40 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1822.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1822.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1895.noarch.rpm last accessed
+2020-01-30 20:50:47 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1895.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1895.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1895.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1895.noarch.rpm</a>
+160.0 MiB downloaded in 6.7 seconds (23.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1895.noarch.rpm last accessed
+2020-01-30 20:50:47 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1895.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1895.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1969.noarch.rpm last accessed
+2020-01-30 20:50:59 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1969.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1969.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1969.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1969.noarch.rpm</a>
+160.0 MiB downloaded in 6.69 seconds (23.9 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1969.noarch.rpm last accessed
+2020-01-30 20:50:59 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1969.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1969.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact s3fs-fuse-1.85-1.amzn1.x86_64.rpm last
+accessed 2020-01-30 20:51:06 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/s3fs-fuse-1.85-1.amzn1.x86_64.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/s3fs-fuse-1.85-1.amzn1.x86_64.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/s3fs-fuse-1.85-1.amzn1.x86_64.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/s3fs-fuse-1.85-1.amzn1.x86_64.rpm</a>
+268.8 KiB downloaded in 0.37 seconds (723.6 KiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact s3fs-fuse-1.85-1.amzn1.x86_64.rpm
+last accessed 2020-01-30 20:51:06 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/s3fs-fuse-1.85-1.amzn1.x86_64.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/s3fs-fuse-1.85-1.amzn1.x86_64.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1549238400000, :to=&gt;1551830400000, :repos=&gt;“yum-test”}</p>
+</dd><dt>DEBUG
+<dd>
+<p>Got 2 results from search in 0.1733580400032224 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189965268020; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189965267440; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189965266720; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG
+<dd>
+<p>Spawned #&lt;Artifactory::Cleaner::DiscoveryWorker:47189965265200; running,
+idle, alive&gt; to process discovery calls</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Enqueue URLs for workers to discover:   0.000246   0.000000   0.000246 ( 
+0.000327)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Dequeue found Artifacts from workers:   0.004705   0.002020   0.006725 ( 
+0.163748)</p>
+</dd><dt>DEBUG
+<dd>
+<p>2 artifacts fetched in 0.16 seconds</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.002370   0.000731   0.003101 (  0.173358)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.005019   0.002154   0.007173 (  0.164219)</p>
+</dd><dt>DEBUG
+<dd>
+<p>2 artifacts fetched in 0.34 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1233.noarch.rpm last accessed
+2020-01-30 20:51:07 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1233.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1233.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1233.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1233.noarch.rpm</a>
+160.0 MiB downloaded in 7.59 seconds (21.1 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-test-3.4.5-1233.noarch.rpm last accessed
+2020-01-30 20:51:07 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1233.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-test-3.4.5-1233.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>downloading #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1233.noarch.rpm last accessed
+2020-01-30 20:51:14 UTC&gt; (<a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1233.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1233.noarch.rpm</a>)
+to /mnt/projects/artifactory-cleaner/results/archive/yum-test</p>
+</dd><dt>DEBUG
+<dd>
+<p><a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1233.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1233.noarch.rpm</a>
+160.0 MiB downloaded in 7.42 seconds (21.5 MiB)/s</p>
+</dd><dt>DEBUG
+<dd>
+<p>DELETE Artifact #&lt;DiscoveredArtifact
+opencdisc-enterprise-cd-web-prod-3.4.5-1233.noarch.rpm last accessed
+2020-01-30 20:51:14 UTC&gt; at <a
+href="https://pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1233.noarch.rpm">pinnacle21.jfrog.io/pinnacle21/api/storage/yum-test/opencdisc-enterprise-cd-web-prod-3.4.5-1233.noarch.rpm</a>!</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1546646400000, :to=&gt;1549238400000, :repos=&gt;“yum-test”}</p>
+</dd></dl>
+
+<pre>HTTP 404 Not Found fetching: /api/search/dates -- assuming no assets for this date range</pre>
+<dl class="rdoc-list label-list"><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.001268   0.001656   0.002924 (  0.213668)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.000000   0.000001   0.000001 (  0.000003)</p>
+</dd><dt>DEBUG
+<dd>
+<p>0 artifacts fetched in 0.21 seconds</p>
+</dd><dt>DEBUG
+<dd>
+<p>Making <a href="../Artifactory.html">Artifactory</a> request
+/api/search/dates for
+{:dateFields=&gt;“created,lastModified,lastDownloaded”,
+:from=&gt;1546300800000, :to=&gt;1546646400000, :repos=&gt;“yum-test”}</p>
+</dd></dl>
+
+<pre>HTTP 404 Not Found fetching: /api/search/dates -- assuming no assets for this date range</pre>
+<dl class="rdoc-list label-list"><dt>DEBUG][Perfdata
+<dd>
+<p><a href="../Artifactory.html">Artifactory</a> request /api/search/dates
+timing:   0.001936   0.001167   0.003103 (  0.167421)</p>
+</dd><dt>DEBUG][Perfdata
+<dd>
+<p>Fetching artifacts timing:   0.000001   0.000002   0.000003 (  0.000002)</p>
+</dd><dt>DEBUG
+<dd>
+<p>0 artifacts fetched in 0.17 seconds</p>
+</dd></dl>
+
+<p>deleted 129 artifacts totaling 18.8 GiB archived 129 artifacts totaling
+18.8 GiB skipped 0 artifacts totaling 0.0 B</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

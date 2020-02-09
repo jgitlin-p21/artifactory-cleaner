@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>clean-test-3.log - RDoc Documentation</title>
+<title>yum-test.yaml - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -115,7 +115,20 @@
   </div>
 </nav>
 
-<main role="main" aria-label="Page results/clean-test-3.log">
+<main role="main" aria-label="Page filters/yum-test.yaml">
+<hr>
+<ul><li>
+<p>!ruby/object:Artifactory::Cleaner::ArtifactFilterRule regex: !ruby/regexp
+/opencdisc-enterprise-cd-(app|web)-(dev|test)-5.0.0-.*/ action: :exclude
+priority: -1 property: :uri</p>
+</li><li>
+<p>!ruby/object:Artifactory::Cleaner::ArtifactFilterRule regex: !ruby/regexp
+/opencdisc-enterprise-cd-(app|web)-(dev|test)-4.1..*/ action: :exclude
+priority: -2 property: :uri</p>
+</li><li>
+<p>!ruby/object:Artifactory::Cleaner::ArtifactFilterRule regex: !ruby/regexp
+/prod/ action: :exclude priority: -100 property: :uri</p>
+</li></ul>
 </main>
 
 

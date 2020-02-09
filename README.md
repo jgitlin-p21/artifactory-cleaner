@@ -19,6 +19,33 @@ sudo gem install artifactory-cleaner-*.gem
 
 to install the `artifactory-cleaner` command. 
 
+Full usage information is available using `artifactory-cleaner help`
+
+The `artifactory-cleaner` CLI interface follows the same format as git: `artifactory-cleaner command [options]`
+
+Commands available are:
+
+ * `artifactory-cleaner archive` Given a specific set of critera (and optionally a set of filters) download all artifacts
+   from specified repos to the local filesystem. *Note:* this will cause the `last_downloaded` date of all the artifacts
+   which are archived to be updated to the time the command is run, so they may no longer match your search criteria on
+   a subsequent run
+ * `artifactory-cleaner clean` delete old artifacts which meet a specific set of critera (and optionally a set of filters)
+   from a given set of repos, with the ability to archive them to the local filesystem. This is Artifactory::Cleaner's 
+   primry function: to reduce disk space usage by deleting old, unnecessary artifacts.
+ * `artifactory-cleaner list-repos` provides information about available repositories in Artifactory. Can be used in
+   pipelines with the `-H` flag, or can be used to query arepository information in human-readable columns.
+ * `artifactory-cleaner usage-report` analyze artifacts and produce a report detailing usage breakdown by date ranges,
+   optionally producting a detailed YAML report of all artifacts meeting search criteria
+
+#### Authentication and Configuration
+
+In order for `artifactory-cleaner` to know which Artifactory server to communicate with and how to authenticate, either
+command-line arguments may be used, or (preferably) a configuration filr may be specified using the `-c / --conf-file`
+switch.
+
+If using command line arguments, `--endpoint` can be used to specify the HTTPS URL of the Artifactory API, and `--api-key`
+can be used to specify the API key. *Be aware* 
+
 ### To use as a gem:
 Add this line to your application's Gemfile:
 

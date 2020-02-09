@@ -7,7 +7,7 @@ module Artifactory
     #
     # The Artifactory::Cleaner::Controller class provides logic central to Artifactory Cleaner.
     # Artifactory::Cleaner::Controller manages the Artifactory API client, performs searches, discovers artifacts, and
-    # more. It is capable of executing tasks in a multi-threaded fashon, making multiple requests to the Artifactory
+    # more. It is capable of executing tasks in a multi-threaded fashion, making multiple requests to the Artifactory
     # server in parallel.
     class Controller
       ##
@@ -51,7 +51,7 @@ module Artifactory
       # is a Hash with three keys, one for each repo type: `:local`, `:remote` and `:virtual`
       # Under each of these keys is a hash mapping repo keys to their Artifactory::Resource::Repository objects
       #
-      # This method may throw network errors from the underlying Artifactory client
+      # This method may raise network errors from the underlying Artifactory client
       #
       # This method is not multi-threaded
       def discover_repos
@@ -253,6 +253,27 @@ module Artifactory
         result
       end
 
+      ##
+      # Iterator method for an artifact search
+      #
+      # the `with_discovered_artifacts` method is used to iterate over artifacts from a search which potentially covers
+      # a large period of time. This method will break the period up into small chunks of time defined by the
+      # `increment` argument (defaulting to 30 days) and will perform multiple searches to avoid large searches which
+      # may time out or overload the Artifactory server.
+      #
+      # Pass a block and the block will be called with every Artifactory::Cleaner::DiscoveredArtifact that is found
+      #
+      # This method is not mult-threaded however it calls artifact_usage_search which is multi-threaded; number of
+      # threads is controlled by the `threads` argument
+      #
+      # This method calls artifact_usage_search which may raise network exceptions
+      #
+      # Params:
+      # +from+:: Time instance for the start date of the search
+      # +to+:: Time instance for the end date of the search; defaults to Time.now
+      # +repos+:: Optional array of repository names to search within; searches all repositories if omitted
+      # +increment+:: Integer number of seconds to chunk the search period into, defaults to 30 days
+      # +threads+:: Number of threads to use to fetch artifacts; defayult is 4 (passed to artifact_usage_search)
       def with_discovered_artifacts(from: nil, to: nil, repos: nil, increment: 30 * 24 * 3600, threads: 4)
         chunk_end = to || Time.now
         while chunk_end > from
@@ -312,6 +333,16 @@ module Artifactory
         end
       end
 
+      ##
+      # Download a copy of an artifact to the local filesystem prior to deletion
+      #
+      # Given an Artifactory::Resource::Artifact `artifact`, download the artifact to the local filesystem directory
+      # specified by the `path` param
+      #
+      # **Note:** Downloading an artifact will update the artifact's last_downloaded date so it may no longer match the
+      # same search criteria it originally die (if last_downlaoded was used to discover this artifact)
+      #
+      # This method is meant to be used prior to calling `delete_artifact`
       def archive_artifact(artifact, path)
         debuglog "[DEBUG] downloading #{artifact} (#{artifact.uri}) to #{path}"
         timing = Benchmark.measure do
@@ -320,9 +351,18 @@ module Artifactory
         debuglog "[DEBUG] #{artifact.uri} #{Util.filesize artifact.size} downloaded in #{timing.real.round(2)} seconds (#{Util.filesize(artifact.size/timing.real)})/s"
       end
 
+      ##
+      # Delete an artifact from the Artifactory server
+      #
+      # Given an Artifactory::Resource::Artifact `artifact`, delete it from the Artifactory server. **This is a
+      # destructive operation -- use with caution!**
+      #
+      # Consider using `archive_artifact` first to save artifacts locally
+      #
+      # This function writes to the remote Artifactory server (specifically it makes a delete call)
       def delete_artifact(artifact)
         debuglog "[DEBUG] DELETE Artifact #{artifact} at #{artifact.uri}!"
-          artifact.delete
+        artifact.delete
       end
 
       ##

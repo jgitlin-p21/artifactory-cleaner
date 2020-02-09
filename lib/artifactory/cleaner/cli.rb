@@ -49,6 +49,8 @@ module Artifactory
         [:key, :package_type, :rclass, :url, :description]
       end
 
+      ##
+      # Constructor for a new CLI interface
       def initialize(*args)
         super
         @config = {}
@@ -68,6 +70,8 @@ module Artifactory
       end
 
       desc "version", "Show version information"
+      ##
+      # Show version information
       def version
         STDERR.puts "Artifactory::Cleaner version #{Artifactory::Cleaner::VERSION}"
         STDERR.puts "Copyright (C) 2020 Pinnacle 21, inc. All Rights Reserved"
@@ -80,6 +84,8 @@ module Artifactory
       option :local, :type => :boolean, :default => true, :desc => "Include local repositories"
       option :remote, :type => :boolean, :default => false, :desc => "Include remote (replication) repositories"
       option :virtual, :type => :boolean, :default => false, :desc => "Include virtual (union) repositories"
+      ##
+      # List all available repos
       def list_repos()
         repo_info_table = []
         repos = @controller.discover_repos
@@ -101,6 +107,8 @@ module Artifactory
       option :from, :type => :string, :default => (Time.now - 2*365*24*3600).to_s
       option :to, :type => :string, :default => (Time.now).to_s
       option :threads, :type => :numeric, :default => 4
+      ##
+      # Analyze usage and report where space is used
       def usage_report
         begin
           from = Time.parse(options.from)
@@ -146,7 +154,7 @@ module Artifactory
       end
 
       desc "archive", "Download artifacts meeting specific criteria"
-      option :dry_run, :aliases => '-n', :type => :boolean, :desc => "Do not actually download anything, only show what actions would have ben taken"
+      option :dry_run, :aliases => '-n', :type => :boolean, :desc => "Do not actually download anything, only show what actions would have been taken"
       option :repos, :type => :array, :desc => "List of repos to download from; will download from all repos if omitted"
       option :from, :type => :string, :default => (Time.now - 2*365*24*3600).to_s, :desc => "Earliest date to include in search; defaults to 2 years ago"
       option :created_before, :type => :string, :desc => "Archive artifacts with a created date earlier than the provided value"
@@ -156,6 +164,14 @@ module Artifactory
       option :threads, :type => :numeric, :default => 4, :desc => "Number of threads to use for fetching artifact info"
       option :archive_to, :type => :string, :desc => "Save artifacts to the provided path before deletion"
       option :filter, :type => :string, :desc => "Specify a YAML file containing filter rules to use"
+      ##
+      # Download artifacts meeting specific criteria
+      #
+      # **WARNING:** This method will cause the `last_downloaded` property of all the matching artifacts to be updated;
+      # therefore, using this method with a `last_used_before` switch may not be idempotent as it will cause the set of
+      # artifacts matching the search to change
+      #
+      # Consider using `clean --archive` instead
       def archive
         dates = parse_date_options
         filter = load_artifact_filter
@@ -208,6 +224,13 @@ module Artifactory
       option :threads, :type => :numeric, :default => 4, :desc => "Number of threads to use for fetching artifact info"
       option :archive_to, :type => :string, :desc => "Save artifacts to the provided path before deletion"
       option :filter, :type => :string, :desc => "Specify a YAML file containing filter rules to use"
+      ##
+      # Delete artifacts meeting specific criteria
+      #
+      # Clean up an Artifactory instance by deleting old, unused artifacts which meet given criteria
+      #
+      # This is a CLI interface to Artifactory::Cleaner's primary function: deleting artifacts which have not been used
+      # in a long time (or which meet other criteria, determined by the powerful regex-based filters)
       def clean
         dates = parse_date_options
         filter = load_artifact_filter
@@ -264,6 +287,8 @@ module Artifactory
 
       private
 
+      ##
+      # Loads the Artifactory configuration from a YAML file
       def load_conf_file(path)
         config = YAML.load_file path
         config.each do |key, val|
@@ -271,11 +296,15 @@ module Artifactory
         end
       end
 
+      ##
+      # Initialize our Artifactory::Cleaner::Controller
       def create_controller
         @controller = Artifactory::Cleaner::Controller.new(@artifactory_config)
         @controller.verbose = true if options.verbose?
       end
 
+      ##
+      # return Ruby Time objects formed from CLI switches `--to`, `--from`, `--ctreated-before` etc
       def parse_date_options
         dates = {}
         dates[:from] = Time.parse(options.from) if options.from
@@ -292,6 +321,8 @@ module Artifactory
         dates
       end
 
+      ##
+      # Parse and validate value for the `--archive-to` CLI switch, ensuring it points to a valid, writable directory
       def parse_archive_option
         archive_to = options.archive_to
         if archive_to
@@ -308,6 +339,8 @@ module Artifactory
         archive_to
       end
 
+      ##
+      # Load Artifactory::Cleaner::ArtifactFilter objects from a YAML file
       def load_artifact_filter
         filter = ArtifactFilter.new
         if options.filter
@@ -321,6 +354,8 @@ module Artifactory
         filter
       end
 
+      ##
+      # Check if a given artifact meets our CLI search criteria and filters
       def artifact_meets_criteria(artifact, dates, filter)
         (dates.has_key?(:created_before) ? artifact.created < dates[:created_before] : true) and
         (dates.has_key?(:modified_before) ? artifact.last_modified < dates[:modified_before] : true) and
@@ -328,12 +363,16 @@ module Artifactory
         (filter.action_for(artifact) == :include)
       end
 
+      ##
+      #
       def repo_cols(repo, include_cols)
         include_cols.map do |col|
           repo.send(col.method).to_s
         end
       end
 
+      ##
+      # Helper method for generating CLI terminal-friendly tables of output
       def get_repo_cols(repo_kinds)
         if options.details?
           selected_cols =
@@ -350,6 +389,8 @@ module Artifactory
         end
       end
 
+      ##
+      # CLI helper method for printing details of discovered repositories to a terminal
       def print_repo_list(repo_info_table, include_cols)
         if options.no_headers || !options.details
           repo_info_table.each {|row| puts row.join("\t")}

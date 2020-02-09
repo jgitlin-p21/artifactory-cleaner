@@ -195,7 +195,7 @@ href="https://github.com/erikhuda/thor">github.com/erikhuda/thor</a></p>
 
         <div class="method-description">
           
-          
+          <p>Constructor for a new <a href="CLI.html">CLI</a> interface</p>
           
           
             <div class="method-calls-super">
@@ -206,7 +206,7 @@ href="https://github.com/erikhuda/thor">github.com/erikhuda/thor</a></p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 52</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-keyword">super</span>
   <span class="ruby-ivar">@config</span> = {}
@@ -306,13 +306,20 @@ href="https://github.com/erikhuda/thor">github.com/erikhuda/thor</a></p>
 
         <div class="method-description">
           
-          
+          <p>Download artifacts meeting specific criteria</p>
+
+<p>*<strong>WARNING:</strong>* This method will cause the `last_downloaded`
+property of all the matching artifacts to be updated; therefore, using this
+method with a `last_used_before` switch may not be idempotent as it will
+cause the set of artifacts matching the search to change</p>
+
+<p>Consider using `clean –archive` instead</p>
           
           
 
           
           <div class="method-source-code" id="archive-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 159</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 175</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">archive</span>
   <span class="ruby-identifier">dates</span> = <span class="ruby-identifier">parse_date_options</span>
   <span class="ruby-identifier">filter</span> = <span class="ruby-identifier">load_artifact_filter</span>
@@ -376,13 +383,21 @@ href="https://github.com/erikhuda/thor">github.com/erikhuda/thor</a></p>
 
         <div class="method-description">
           
-          
+          <p>Delete artifacts meeting specific criteria</p>
+
+<p>Clean up an <a href="../../Artifactory.html">Artifactory</a> instance by
+deleting old, unused artifacts which meet given criteria</p>
+
+<p>This is a <a href="CLI.html">CLI</a> interface to
+Artifactory::Cleaner&#39;s primary function: deleting artifacts which have
+not been used in a long time (or which meet other criteria, determined by
+the powerful regex-based filters)</p>
           
           
 
           
           <div class="method-source-code" id="clean-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 211</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 234</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clean</span>
   <span class="ruby-identifier">dates</span> = <span class="ruby-identifier">parse_date_options</span>
   <span class="ruby-identifier">filter</span> = <span class="ruby-identifier">load_artifact_filter</span>
@@ -459,13 +474,13 @@ href="https://github.com/erikhuda/thor">github.com/erikhuda/thor</a></p>
 
         <div class="method-description">
           
-          
+          <p>List all available repos</p>
           
           
 
           
           <div class="method-source-code" id="list_repos-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 83</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list_repos</span>()
   <span class="ruby-identifier">repo_info_table</span> = []
   <span class="ruby-identifier">repos</span> = <span class="ruby-ivar">@controller</span>.<span class="ruby-identifier">discover_repos</span>
@@ -502,13 +517,13 @@ href="https://github.com/erikhuda/thor">github.com/erikhuda/thor</a></p>
 
         <div class="method-description">
           
-          
+          <p>Analyze usage and report where space is used</p>
           
           
 
           
           <div class="method-source-code" id="usage_report-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 104</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">usage_report</span>
   <span class="ruby-keyword">begin</span>
     <span class="ruby-identifier">from</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">options</span>.<span class="ruby-identifier">from</span>)
@@ -575,13 +590,13 @@ href="https://github.com/erikhuda/thor">github.com/erikhuda/thor</a></p>
 
         <div class="method-description">
           
-          
+          <p>Show version information</p>
           
           
 
           
           <div class="method-source-code" id="version-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 71</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/cli.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">version</span>
   <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Artifactory::Cleaner version #{Artifactory::Cleaner::VERSION}&quot;</span>
   <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Copyright (C) 2020 Pinnacle 21, inc. All Rights Reserved&quot;</span>

@@ -3,7 +3,6 @@ require 'artifactory'
 
 module Artifactory
   module Cleaner
-
     ##
     # An Artifact discovered during a repository search
     #
@@ -27,11 +26,15 @@ module Artifactory
         self.class.latest_date_from(self)
       end
 
+      ##
+      # The filename componet (basename) of this artifact's URL
       def filename
         uri = URI(self.uri)
         File.basename(uri.path)
       end
 
+      ##
+      # A string representation of this artifact
       def to_s
         "#<DiscoveredArtifact #{filename} last accessed #{latest_date}>"
       end

@@ -216,13 +216,23 @@ instances and handles selecting the proper one for a given Artifact</p>
 
         <div class="method-description">
           
-          
+          <p><a href="ArtifactBucket.html">ArtifactBucket</a> constructor</p>
+
+<p>Params:</p>
+<dl class="rdoc-list note-list"><dt><code>min</code>
+<dd>
+<p>Lower bound (in days) for the age of artifacts this bucket should contain</p>
+</dd><dt><code>max</code>
+<dd>
+<p>Upper bound (in days) for the age of artifacts this bucket should contain,
+defaults to none (infinity)</p>
+</dd></dl>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 26</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">min</span>,<span class="ruby-identifier">max</span>=<span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@min</span> = <span class="ruby-identifier">min</span>
   <span class="ruby-ivar">@max</span> = <span class="ruby-identifier">max</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Float</span><span class="ruby-operator">::</span><span class="ruby-constant">INFINITY</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">max</span>
@@ -288,15 +298,20 @@ instances and handles selecting the proper one for a given Artifact</p>
 
         <div class="method-description">
           
-          
+          <p>Update an artifact in the bucket</p>
+
+<p>TODO: This method does not validate if the artifact still belongs in this
+bucket by age</p>
           
           
 
           
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 39</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">artifact</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;expected Artifactory::Resource::Artifact, got #{artifact.class.name}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Resource</span><span class="ruby-operator">::</span><span class="ruby-constant">Artifact</span>
+  <span class="ruby-ivar">@filesize</span> <span class="ruby-operator">-=</span> <span class="ruby-ivar">@collection</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">size</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@collection</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Resource</span><span class="ruby-operator">::</span><span class="ruby-constant">Artifact</span>
+  <span class="ruby-ivar">@filesize</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">size</span>
   <span class="ruby-ivar">@collection</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">artifact</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -322,13 +337,14 @@ instances and handles selecting the proper one for a given Artifact</p>
 
         <div class="method-description">
           
-          
+          <p>Given an age (in days) return true if this bucket covers that age (if
+it&#39;s within the min and max of this bucket)</p>
           
           
 
           
           <div class="method-source-code" id="covers-3F-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">covers?</span>(<span class="ruby-identifier">age</span>)
   <span class="ruby-identifier">age</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@min</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">age</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@max</span>
 <span class="ruby-keyword">end</span></pre>
@@ -355,18 +371,27 @@ instances and handles selecting the proper one for a given Artifact</p>
 
         <div class="method-description">
           
-          
+          <p>Add an artifact to the end of this bucket</p>
+
+<p>Calls push on the Array which backs this bucket</p>
+
+<p>Aliased as method `&lt;&lt;`</p>
+
+<p>TODO: This method does not validate if the artifact belongs in this bucket
+by age</p>
+
+<p>@see: Array#push</p>
           
           
 
           
           <div class="method-source-code" id="push-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 44</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">push</span>(<span class="ruby-identifier">artifact</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;expected Artifactory::Resource::Artifact, got #{artifact.class.name}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Resource</span><span class="ruby-operator">::</span><span class="ruby-constant">Artifact</span>
   <span class="ruby-ivar">@collection</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">artifact</span>
   <span class="ruby-ivar">@filesize</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">size</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -395,13 +420,20 @@ instances and handles selecting the proper one for a given Artifact</p>
 
         <div class="method-description">
           
-          
+          <p>Recalculate the file size of this bucket by adding up the size of all
+artifacts it contains</p>
+
+<p>This method forces recalculation of the total fize size of all artifacts
+within this bucket; the filesize is tracked automatically as artifacts are
+added, so thi method should be unnecessary. It is av available in case the
+tracking built in to `push`/`unshift`/`[]=` hsa a bug, or in case artifact
+sizes somehow change</p>
           
           
 
           
           <div class="method-source-code" id="recalculate_filesize-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">recalculate_filesize</span>
   <span class="ruby-ivar">@filesize</span> = <span class="ruby-ivar">@collection</span>.<span class="ruby-identifier">reduce</span>(<span class="ruby-value">0</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>,<span class="ruby-identifier">asset</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">asset</span>.<span class="ruby-identifier">size</span>}
 <span class="ruby-keyword">end</span></pre>
@@ -428,18 +460,25 @@ instances and handles selecting the proper one for a given Artifact</p>
 
         <div class="method-description">
           
-          
+          <p>Add an artifact to the beginning of this bucket</p>
+
+<p>Calls unshift on the Array which backs this bucket</p>
+
+<p>TODO: This method does not validate if the artifact belongs in this bucket
+by age</p>
+
+<p>@see Array#unshift</p>
           
           
 
           
           <div class="method-source-code" id="unshift-source">
-            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 52</span>
+            <pre><span class="ruby-comment"># File lib/artifactory/cleaner/artifact_bucket.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unshift</span>(<span class="ruby-identifier">artifact</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;expected Artifactory::Resource::Artifact, got #{artifact.class.name}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Artifactory</span><span class="ruby-operator">::</span><span class="ruby-constant">Resource</span><span class="ruby-operator">::</span><span class="ruby-constant">Artifact</span>
   <span class="ruby-ivar">@collection</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">artifact</span>
   <span class="ruby-ivar">@filesize</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">artifact</span>.<span class="ruby-identifier">size</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
