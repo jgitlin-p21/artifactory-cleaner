@@ -6,7 +6,5 @@
 # Artifactory::Cleaner::CLI class; all the work is done there
 # @see Artifactory::Cleaner::CLI
 
-require 'bundler/setup'
 require 'artifactory/cleaner'
-
 Artifactory::Cleaner::CLI.start(ARGV)
