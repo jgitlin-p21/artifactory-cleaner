@@ -105,15 +105,20 @@ module Artifactory
         timing[:dequeue] = Benchmark.measure do
           until @discovery_queues.incoming.empty? and @discovery_queues.outgoing.empty? and not @workers.any? &:working?
             begin
+              #debuglog("[DEBUG] Pop from outgoing queue; incoming.len=#{@discovery_queues.incoming.length}, outgoing.len=#{@discovery_queues.outgoing.length}")
               item = @discovery_queues.outgoing.pop
               if item.kind_of? Artifactory::Resource::Artifact
                 result << item
                 #debuglog "[DEBUG] Discovered #{item} from a child thread"
+              elsif item.kind_of? Artifactory::Error::ArtifactoryError
+                STDERR.puts "[ERROR] Artifactory Error from artifact fetch: #{item}"
+                STDERR.puts item.full_message
+                STDERR.puts "Caused by #{item.cause.full_message}" if item.cause
               elsif item.kind_of? Error
                 STDERR.puts "[ERROR] Error from artifact fetch: #{item}"
                 STDERR.puts item.full_message
                 STDERR.puts "Caused by #{item.cause.full_message}" if item.cause
-              elsif !artifact.nil?
+              elsif !item.nil?
                 STDERR.puts "[ERROR] Got #{item} back from the discovery queue, expected an Artifactory::Resource::Artifact"
               end
             rescue => processing_ex
@@ -450,7 +455,7 @@ module Artifactory
       # given artifact data, add it to the queue for processing and make sure we have workers to process it
       def queue_discovery_of_artifact(artifact_data)
         @discovery_queues.incoming.push(artifact_data)
-        #debuglog "[DEBUG] Queued #{artifact_data['uri']} for discovery"
+        debuglog "[DEBUG] Queued #{artifact_data['uri']} for discovery"
         spawn_threads
       end
 

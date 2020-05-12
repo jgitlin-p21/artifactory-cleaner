@@ -82,9 +82,10 @@ module Artifactory
       def process(payload)
         @working = true
         begin
-          @queues.outgoing.push discover_artifact_from payload
+          @queues.outgoing.push(discover_artifact_from(payload))
         rescue => ex
-          return ex # TODO: Should this be pushed to the outgoing queue instead?
+          STDERR.puts "[Error] Exception in thread: #{ex.full_message}"
+          @queues.outgoing.push(ex)
         ensure
           @working = false
         end
@@ -98,9 +99,11 @@ module Artifactory
         artifact = nil
         while retries > 0
           begin
+            #STDERR.puts "[DEBUG] thread discover_artifact_from #{artifact_info["uri"]} start"
             retries -= 1
             artifact = Artifactory::Cleaner::DiscoveredArtifact.from_url(artifact_info["uri"], client: @artifactory_client)
             artifact.last_downloaded = Time.parse(artifact_info["lastDownloaded"]) unless artifact_info["lastDownloaded"].to_s.empty?
+            #STDERR.puts "[DEBUG] thread discover_artifact_from #{artifact_info["uri"]} end"
             return artifact
           rescue Net::OpenTimeout, Artifactory::Error::ConnectionError => err
             artifact = err
@@ -111,7 +114,7 @@ module Artifactory
           rescue Artifactory::Error::HTTPError => err
             artifact = err
             if err.code == 404
-              log "[WARN] HTTP 404 Not Found fetching: #{artifact["uri"]}"
+              log "[WARN] HTTP 404 Not Found fetching: #{artifact_info["uri"]}"
               return nil
             else
               retries = min(retries, 1)
