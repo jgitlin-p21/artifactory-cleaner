@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor", '~> 1.0.1'
   spec.add_dependency "sysexits", '>= 1.2.0'
 
-  spec.add_runtime_dependency "artifactory"
+  spec.add_dependency "artifactory", '~> 3.0.13'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

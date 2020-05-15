@@ -2,3 +2,5 @@ Gemfile.lock
 .DS_Store
 .artifactory.yml
 artifactory-cleaner-*.gem
+
+.idea/**

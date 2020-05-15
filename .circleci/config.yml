@@ -1,0 +1,39 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2
+caches:
+  bundler: ./vendor
+
+jobs:
+  build:
+    executor: ruby/default
+    docker:
+      - image: p21jgitlin/ruby-ci:latest
+    environment:
+      BUNDLE_SILENCE_ROOT_WARNING: 1
+    steps:
+      - checkout
+      - run:
+          name: Which bundler?
+          command: bundle -v
+      - run:
+          name: Bundle Install
+          command: bundle install
+      - run:
+          name: Tests
+          when: always
+          command: |
+            mkdir ~/rspec
+            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+      - store_test_results:
+          path: ~/rspec
+      - run:
+          name: Package
+          command: |
+            mkdir artifacts
+            bundle install
+            bundle exec rake
+            gem build artifactory-cleaner.gemspec
+            mv artifactory-cleaner-*.gem artifacts
+      - store_artifacts:
+          path: artifacts
