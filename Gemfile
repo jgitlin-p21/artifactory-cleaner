@@ -4,9 +4,12 @@ source "https://rubygems.org"
 gemspec
 
 gem "rake", "~> 12.0"
-gem "rspec", "~> 3.0"
 
 group :development do
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
+end
+group :test do
+  gem "rspec", "~> 3.0"
+  gem "rspec_junit_formatter", ">= 0.4.1"
 end

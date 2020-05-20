@@ -2,7 +2,7 @@
 
 Artifactory Cleaner is a tool for managing Artifactory repositories with a focus on analyzing and optimizing storage
 usage within Artifactory. `Artifactory::Cleaner` can be used as a Gem inside other Ruby automation, and also includes
-a comamnd-line interface (CLI) which can be used inside an interactive terminal session or incorporated into other
+a command-line interface (CLI) which can be used inside an interactive terminal session or incorporated into other
 automation workflows.
 
 ## Installation
