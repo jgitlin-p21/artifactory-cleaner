@@ -2,6 +2,10 @@ Artifactory Cleaner CHANGELOG
 =============================
 This file describes the changes made in each release of `artifactory-cleaner`
 
+## v1.0.4 (May 29, 2020)
+
+ - Fix bug with accepting YAML filter files on the CLI
+
 ## v1.0.3 (May 15, 2020)
 
  - Fix thread deadlocks which occured if exceptions were raised in the discovery worker threads

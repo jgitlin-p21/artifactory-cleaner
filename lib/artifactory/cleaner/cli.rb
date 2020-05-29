@@ -55,9 +55,9 @@ module Artifactory
         super
         @config = {}
         begin
-          load_conf_file options.conf_file if options.conf_file
+          load_conf_file options[:conf_file] if options[:conf_file]
         rescue => ex
-          STDERR.puts "Unable to load config from #{options.conf_file}: #{ex}"
+          STDERR.puts "Unable to load config from #{options[:conf_file]}: #{ex}"
           exit Sysexits::EX_DATAERR
         end
         @artifactory_config = {
@@ -111,8 +111,8 @@ module Artifactory
       # Analyze usage and report where space is used
       def usage_report
         begin
-          from = Time.parse(options.from)
-          to = Time.parse(options.to)
+          from = Time.parse(options[:from])
+          to = Time.parse(options[:to])
         rescue => ex
           STDERR.puts "Unable to parse time format. Please use: YYYY-MM-DD HH:II:SS"
           STDERR.puts ex
@@ -120,12 +120,12 @@ module Artifactory
         end
 
         begin
-          STDERR.puts "[DEBUG] controller.bucketize_artifacts from #{from} to #{to} repos #{options.repos}" if options.verbose?
+          STDERR.puts "[DEBUG] controller.bucketize_artifacts from #{from} to #{to} repos #{options[:repos]}" if options.verbose?
           buckets = @controller.bucketize_artifacts(
               from: from,
               to: to,
-              repos: options.repos,
-              threads: options.threads,
+              repos: options[:repos],
+              threads: options[:threads],
           )
 
           @controller.bucketized_artifact_report(buckets).each { |l| STDERR.puts l }
@@ -192,7 +192,7 @@ module Artifactory
             }
         }
 
-        @controller.with_discovered_artifacts(from: dates[:from], to: dates[:to], repos: options.repos, threads: options.threads) do |artifact|
+        @controller.with_discovered_artifacts(from: dates[:from], to: dates[:to], repos: options[:repos], threads: options[:threads]) do |artifact|
           if artifact_meets_criteria(artifact, dates, filter)
             if options.dry_run?
               STDERR.puts "Would archive #{artifact} to #{archive_to}"
@@ -252,8 +252,8 @@ module Artifactory
             }
         }
 
-        STDERR.puts "[DEBUG] controller.bucketize_artifacts from #{dates[:from]} to #{dates[:to]} repos #{options.repos}" if options.verbose?
-        @controller.with_discovered_artifacts(from: dates[:from], to: dates[:to], repos: options.repos, threads: options.threads) do |artifact|
+        STDERR.puts "[DEBUG] controller.bucketize_artifacts from #{dates[:from]} to #{dates[:to]} repos #{options[:repos]}" if options.verbose?
+        @controller.with_discovered_artifacts(from: dates[:from], to: dates[:to], repos: options[:repos], threads: options[:threads]) do |artifact|
           if artifact_meets_criteria(artifact, dates, filter)
             if archive_to
               if options.dry_run?
@@ -307,10 +307,10 @@ module Artifactory
       # return Ruby Time objects formed from CLI switches `--to`, `--from`, `--ctreated-before` etc
       def parse_date_options
         dates = {}
-        dates[:from] = Time.parse(options.from) if options.from
-        dates[:created_before] = Time.parse(options.created_before) if options.created_before
-        dates[:modified_before] = Time.parse(options.modified_before) if options.modified_before
-        dates[:last_used_before] = Time.parse(options.last_used_before) if options.last_used_before
+        dates[:from] = Time.parse(options[:from]) if options[:from]
+        dates[:created_before] = Time.parse(options[:created_before]) if options[:created_before]
+        dates[:modified_before] = Time.parse(options[:modified_before]) if options[:modified_before]
+        dates[:last_used_before] = Time.parse(options[:last_used_before]) if options[:last_used_before]
         dates[:to] = [dates[:created_before], dates[:modified_before], dates[:downloaded_before], dates[:last_used_before]].compact.sort.first
 
         if dates[:to].nil?
@@ -324,7 +324,7 @@ module Artifactory
       ##
       # Parse and validate value for the `--archive-to` CLI switch, ensuring it points to a valid, writable directory
       def parse_archive_option
-        archive_to = options.archive_to
+        archive_to = options[:archive_to]
         if archive_to
           unless File.directory? archive_to
             STDERR.puts "#{archive_to} is not a directory. `--archive-to` expects a valid, existing directory under which to store archived artifacts"
@@ -343,12 +343,12 @@ module Artifactory
       # Load Artifactory::Cleaner::ArtifactFilter objects from a YAML file
       def load_artifact_filter
         filter = ArtifactFilter.new
-        if options.filter
-          unless File.exist? options.filter and File.readable? options.filter
-            STDERR.puts "Unable to read specified filter file #{options.filter}"
+        if options[:filter]
+          unless File.exist? options[:filter] and File.readable? options[:filter]
+            STDERR.puts "Unable to read specified filter file #{options[:filter]}"
             exit Sysexits::EX_USAGE
           end
-          rules = YAML.load_file options.filter
+          rules = YAML.load_file options[:filter]
           rules.each {|rule| filter << rule}
         end
         filter
@@ -376,10 +376,10 @@ module Artifactory
       def get_repo_cols(repo_kinds)
         if options.details?
           selected_cols =
-              if options.output.nil?
+              if options[:output].nil?
                 Artifactory::Cleaner::CLI.default_repo_table_cols
               else
-                options.output.split(',').map &:to_sym
+                options[:output].split(',').map &:to_sym
               end
           @repo_table_cols.select do |col|
             (col.only.nil? or repo_kinds.include? col.only) and (selected_cols.include? col.method)
@@ -392,7 +392,7 @@ module Artifactory
       ##
       # CLI helper method for printing details of discovered repositories to a terminal
       def print_repo_list(repo_info_table, include_cols)
-        if options.no_headers || !options.details
+        if options[:no_headers] || !options[:details]
           repo_info_table.each {|row| puts row.join("\t")}
         else
           headers = include_cols.map &:heading
