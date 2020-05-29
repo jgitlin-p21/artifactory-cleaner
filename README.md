@@ -1,5 +1,8 @@
 # Artifactory::Cleaner
 
+[![Gem Version](https://badge.fury.io/rb/artifactory-cleaner.svg)](https://badge.fury.io/rb/artifactory-cleaner)
+[![CircleCI](https://circleci.com/bb/pinnacle21/artifactory-cleaner.svg?style=svg&circle-token=da5970d1966d86b5fd6c37f70ad59bedbb66f3b4)](<LINK>)
+
 Artifactory Cleaner is a tool for managing Artifactory repositories with a focus on analyzing and optimizing storage
 usage within Artifactory. `Artifactory::Cleaner` can be used as a Gem inside other Ruby automation, and also includes
 a command-line interface (CLI) which can be used inside an interactive terminal session or incorporated into other
