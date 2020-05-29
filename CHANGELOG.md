@@ -2,6 +2,12 @@ Artifactory Cleaner CHANGELOG
 =============================
 This file describes the changes made in each release of `artifactory-cleaner`
 
+## v1.0.5 (May 29, 2020)
+
+ - Check size of archived artifacts to ensure they downloaded properly
+ - Depend on `artifactory` gem v3.0.15 which properly follows HTTP redirects
+ - Gemspec cleanup
+ 
 ## v1.0.4 (May 29, 2020)
 
  - Fix bug with accepting YAML filter files on the CLI
