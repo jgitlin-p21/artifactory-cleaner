@@ -13,5 +13,9 @@ module Artifactory
   module Cleaner
     class Error < StandardError; end
 
+    class ArchiveError < RuntimeError; end
+    class ArchiveFileNotWritten < ArchiveError; end
+    class ArchiveFileSizeMismatch < ArchiveError; end
+
   end
 end

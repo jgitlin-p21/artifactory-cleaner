@@ -345,15 +345,23 @@ module Artifactory
       # specified by the `path` param
       #
       # **Note:** Downloading an artifact will update the artifact's last_downloaded date so it may no longer match the
-      # same search criteria it originally die (if last_downlaoded was used to discover this artifact)
+      # same search criteria it originally die (if last_downloaded was used to discover this artifact)
       #
       # This method is meant to be used prior to calling `delete_artifact`
       def archive_artifact(artifact, path)
+        path = File.dirname(File.join(path, URI.parse(artifact.download_uri).path.split( artifact.repo )[1]))
+
         debuglog "[DEBUG] downloading #{artifact} (#{artifact.uri}) to #{path}"
+        archived_file = nil
         timing = Benchmark.measure do
-          artifact.download(path)
+          archived_file = artifact.download(path)
         end
+
         debuglog "[DEBUG] #{artifact.uri} #{Util.filesize artifact.size} downloaded in #{timing.real.round(2)} seconds (#{Util.filesize(artifact.size/timing.real)})/s"
+
+        raise ArchiveFileNotWritten, "Failed to write to #{archived_file}" unless File.exist? archived_file
+        raise ArchiveFileNotWritten, "Archive file is empty: #{archived_file}" unless File.size? archived_file
+        raise ArchiveFileSizeMismatch, "#{path} size mismatch (#{File.size(archived_file)} != #{artifact.size})" unless File.size(archived_file) == artifact.size
       end
 
       ##
